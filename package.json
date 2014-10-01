@@ -1,23 +1,23 @@
 {
-  "name": "ConnectSdk",
-  "version": "0.0.1",
-  "description": "SDK for the Connect Getty Images API",
-  "keywords": [
-    "connect",
-    "getty",
-    "images"
-  ],
-  "author": {
-    "name": "Jason Racey",
-    "email": "jason.racey@gettyimages.com"
-  },
-  "repository": {},
-  "scripts": {
-    "test": "make test-all"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "mocha": "^1.21.4"
-  },
-  "license": "MIT"
+	"author": {
+		"email": "jason.racey@gettyimages.com",
+		"name": "Jason Racey"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"mocha": "^1.21.4"
+	},
+	"description": "SDK for the Getty Images Connect API",
+	"keywords": [
+		"connect",
+		"getty",
+		"images"
+	],
+	"license": "MIT",
+	"main": "connectsdk.js"
+	"name": "ConnectSdk",
+	"repository": {},
+	"scripts": {
+		"test": "make test-all"
+	}
 }
