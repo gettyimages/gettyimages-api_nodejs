@@ -18,7 +18,7 @@
 		"email": "jason.racey@gettyimages.com",
 		"name": "Jason Racey"
 	},
-	"main": "connectsdk.js"
+	"main": "connectsdk.js",
 	"devDependencies": {
 		"mocha": "^1.21.4"
 	},
