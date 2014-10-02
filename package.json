@@ -16,7 +16,9 @@
 	"license": "MIT",
 	"main": "connectsdk.js"
 	"name": "ConnectSdk",
-	"repository": {},
+	"repository": {
+		"https://github.com/gettyimages/connect_sdk_nodejs"
+	},
 	"scripts": {
 		"test": "make test-all"
 	}
