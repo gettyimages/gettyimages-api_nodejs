@@ -78,7 +78,6 @@ describe('ConnectSdk', function() {
 				.withResponseField('download_sizes')
 				.withResponseField('downloads')
 				.withResponseField('editorial_source_name')
-				.withResponseField('high_res_comp')
 				.withResponseField('id')
 				.withResponseField('keywords')
 				.withResponseField('largest_downloads')

@@ -15,7 +15,8 @@ Create the following system environment variables using your Getty Images Connec
  *  **ConnectSDK_UserPassword**
 
 Install the Getty Images Connect SDK:
-
+    
+    $ npm install
     $ npm install -g connectsdk
 
 Test your install. From the ConnectSdk directory:
