@@ -92,8 +92,7 @@ describe('ConnectSdk', function() {
 				
 			images.execute(function(err, response) {
 				if (err) throw err
-        console.log(JSON.stringify(response))
-				assert(response.images_not_found, 'Expected something')
+				assert(response.images_not_found)
 				assert.equal(response.images_not_found.length, 0)
 				assert(response.images)
 				assert.equal(response.images.length, 1)
