@@ -2,11 +2,10 @@ var assert = require("assert")
 var ConnectSdk = require('../connectsdk.js')
 
 describe('ConnectSdk', function() {
-
+  this.timeout(10000); //Sets the mocha framework timeout to 10seconds. Default is 2sec
 	describe('images', function() {
 	
 		it ('can return a single image', function(done) {
-
 			var connectSdk = new ConnectSdk(
 				process.env.ConnectSDK_ApiKey, 
 				process.env.ConnectSDK_ApiSecret)
@@ -93,7 +92,8 @@ describe('ConnectSdk', function() {
 				
 			images.execute(function(err, response) {
 				if (err) throw err
-				assert(response.images_not_found)
+        console.log(JSON.stringify(response))
+				assert(response.images_not_found, 'Expected something')
 				assert.equal(response.images_not_found.length, 0)
 				assert(response.images)
 				assert.equal(response.images.length, 1)
