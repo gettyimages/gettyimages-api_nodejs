@@ -1,6 +1,6 @@
 {
 	"name": "connectsdk",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "SDK for the Getty Images Connect API",
 	"keywords": [
 		"connect",
