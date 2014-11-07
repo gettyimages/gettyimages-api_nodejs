@@ -2,7 +2,8 @@ var assert = require("assert")
 var ConnectSdk = require('../connectsdk.js')
 
 describe('ConnectSdk', function() {
-
+	this.timeout(10000);
+	
 	describe('download', function() {
 
 		it ('can return a uri', function(done) {
