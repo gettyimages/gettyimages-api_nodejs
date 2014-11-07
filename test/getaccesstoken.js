@@ -3,6 +3,8 @@ var ConnectSdk = require('../connectsdk.js')
 var Credentials = require('../lib/credentials.js')
 
 describe('ConnectSdk', function() {
+
+	this.timeout(10000)
 	
 	describe('getAccessToken', function() {
 

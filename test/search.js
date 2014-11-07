@@ -3,8 +3,7 @@ var ConnectSdk = require('../connectsdk.js')
 
 describe('ConnectSdk', function() {
 
-	//Sets timeout to 10seconds since search can take longer than the default mocha framework time of 2seconds
-	this.timeout(10000); 
+	this.timeout(10000)
 
 	describe('search', function() {
 
