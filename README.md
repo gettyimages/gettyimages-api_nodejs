@@ -1,8 +1,7 @@
-# Getty Images Connect SDK
-###Node.js SDK for the  Getty Images Connect API
+# Getty Images API Node.js SDK
 
 ## Prerequesites
-* [Getty Images Connect account](https://api.gettyimages.com/member/register)
+* [Getty Images API account](https://api.gettyimages.com/member/register)
 * [Node.js](http://nodejs.org)
 * [NPM](http://npmjs.org)
 
@@ -32,7 +31,7 @@ Or you may define the SDK as a dependency of your application by including it in
     var connectSdk = new ConnectSdk (
         process.env.ConnectSDK_ApiKey,
         process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName, 
+        process.env.ConnectSDK_UserName,
         process.env.ConnectSDK_UserPassword)
 
 	var search = connectSdk
@@ -41,7 +40,7 @@ Or you may define the SDK as a dependency of your application by including it in
 		.withPage(1)
 		.withPageSize(1)
 		.withPhrase('beach')
-			
+
 	search.execute(function(err, response) {
 		if (err) throw err
 		console.log(JSON.stringify(response.images[0]))
@@ -52,13 +51,13 @@ Or you may define the SDK as a dependency of your application by including it in
     var connectSdk = new ConnectSdk (
         process.env.ConnectSDK_ApiKey,
         process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName, 
+        process.env.ConnectSDK_UserName,
         process.env.ConnectSDK_UserPassword)
 
 	var images = connectSdk
 		.images()
 		.withId('200261415-001')
-		
+
 	images.execute(function(err, response) {
 		if (err) throw err
 		console.log(JSON.stringify(response.images[0]))
@@ -69,13 +68,13 @@ Or you may define the SDK as a dependency of your application by including it in
     var connectSdk = new ConnectSdk (
         process.env.ConnectSDK_ApiKey,
         process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName, 
+        process.env.ConnectSDK_UserName,
         process.env.ConnectSDK_UserPassword)
-				
+
     var download = connectSdk
         .download()
         .withId('467073457')
-				
+
     download.execute(function(err, response) {
         if (err) throw err
         console.log(response.uri)
@@ -86,7 +85,7 @@ Or you may define the SDK as a dependency of your application by including it in
     var connectSdk = new ConnectSdk (
         process.env.ConnectSDK_ApiKey,
         process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName, 
+        process.env.ConnectSDK_UserName,
         process.env.ConnectSDK_UserPassword)
 
     connectSdk.getAccessToken(function(err, response) {
@@ -96,5 +95,6 @@ Or you may define the SDK as a dependency of your application by including it in
 
 ## Help & Support
 
-* [Connect Getty Images API](http://api.gettyimages.com/)
+* [Getty Images API](http://developer.gettyimages.com/)
 * [Contact Developer Support](mailto:developersupport@gettyimages.com)
+* [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
