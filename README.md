@@ -13,9 +13,9 @@ Create the following system environment variables using your Getty Images Connec
  *  **ConnectSDK_UserName**
  *  **ConnectSDK_UserPassword**
 
-The SDK is available as an npm module. Install globally with:
+The SDK is available as an [npm module](https://www.npmjs.com/package/gettyimages-api). Install globally with:
 
-    $ npm install -g connectsdk
+    $ npm install -g gettyimages-api
 
 Or you may define the SDK as a dependency of your application by including it in a package.json file:
 

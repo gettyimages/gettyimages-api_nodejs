@@ -1,11 +1,11 @@
 {
-	"name": "connectsdk",
-	"version": "1.0.4",
+	"name": "gettyimages-api",
+	"version": "1.0.5",
 	"description": "Getty Images API SDK",
 	"keywords": [
-		"connect",
 		"getty",
 		"images",
+        "api",
 		"sdk"
 	],
 	"homepage": "http://developer.gettyimages.com",
@@ -15,8 +15,8 @@
 	},
 	"license": "MIT",
 	"author": {
-		"email": "jason.racey@gettyimages.com",
-		"name": "Jason Racey"
+		"email": "developersupport@gettyimages.com",
+		"name": "Getty Images API Team"
 	},
 	"main": "connectsdk.js",
 	"devDependencies": {
