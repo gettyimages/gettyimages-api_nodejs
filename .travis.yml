@@ -5,3 +5,10 @@ sudo: false
 addons:
     code_climate:
         repo_token: 94ec2b4f3f50ee0c578e96c4aa4e7dafd2313fd74672ad37daa5784147ffdd5b
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/7fd34e135d78698298e6
+    on_success: always  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
