@@ -1,4 +1,6 @@
 # Getty Images API Node.js SDK
+
+[![Join the chat at https://gitter.im/gettyimages/gettyimages-api_nodejs](https://badges.gitter.im/gettyimages/gettyimages-api_nodejs.svg)](https://gitter.im/gettyimages/gettyimages-api_nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![](https://travis-ci.org/gettyimages/gettyimages-api_nodejs.svg?branch=master)](https://travis-ci.org/gettyimages/gettyimages-api_nodejs)  
 [![Code Climate](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs/badges/gpa.svg)](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs)
 
