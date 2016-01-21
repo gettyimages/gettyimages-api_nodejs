@@ -2,7 +2,7 @@
 
 [![](https://travis-ci.org/gettyimages/gettyimages-api_nodejs.svg?branch=master)](https://travis-ci.org/gettyimages/gettyimages-api_nodejs)
 [![Code Climate](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs/badges/gpa.svg)](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs)
-[![Join the chat at https://gitter.im/gettyimages/gettyimages-api_nodejs](https://badges.gitter.im/gettyimages/gettyimages-api_nodejs.svg)](https://gitter.im/gettyimages/gettyimages-api_nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/gettyimages/gettyimages-api_nodejs](https://badges.gitter.im/gettyimages/gettyimages-api_nodejs.svg)](https://gitter.im/gettyimages/gettyimages-api_nodejs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)[![Downloads](https://img.shields.io/npm/dm/gettyimages-api.svg)](http://npm-stat.com/charts.html?package=gettyimages-api)
 
 ## Prerequesites
 * [Getty Images API account](https://api.gettyimages.com/member/register)
