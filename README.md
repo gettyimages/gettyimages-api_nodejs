@@ -10,95 +10,58 @@
 * [NPM](http://npmjs.org)
 
 ## Getting Started
-Create the following system environment variables using your Getty Images Connect credentials:
+The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimages-api). Install in your workspace with:
 
- *  **ConnectSDK_ApiKey**
- *  **ConnectSDK_ApiSecret**
- *  **ConnectSDK_UserName**
- *  **ConnectSDK_UserPassword**
-
-The SDK is available as an [npm module](https://www.npmjs.com/package/gettyimages-api). Install globally with:
-
-    $ npm install -g gettyimages-api
-
-Or you may define the SDK as a dependency of your application by including it in a package.json file:
-
-    { "dependencies" : {
-        "connectsdk": "1.0.x"
-        }
-    }
+    $ npm install gettyimages-api
 
 ## Examples
+### Search for one or more images
+```
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.search().images().withPage(1).withPageSize(1).withPhrase('beach')
+    .execute(function(err, response) {
+        if (err) throw err
+        console.log(JSON.stringify(response.images[0]));
+    });
+```
+### Get detailed information for one or more images
+```
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.images().withId('200261415-001').execute(
+    function(err, response) {
+        if (err) throw err
+        console.log(JSON.stringify(response.images[0]));
+    });
+```
+### Download an image
 
-**Search for one or more images:**
-
-    var connectSdk = new ConnectSdk (
-        process.env.ConnectSDK_ApiKey,
-        process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName,
-        process.env.ConnectSDK_UserPassword)
-
-	var search = connectSdk
-		.search()
-		.images()
-		.withPage(1)
-		.withPageSize(1)
-		.withPhrase('beach')
-
-	search.execute(function(err, response) {
-		if (err) throw err
-		console.log(JSON.stringify(response.images[0]))
-	})
-
-**Get detailed information for one or more images:**
-
-    var connectSdk = new ConnectSdk (
-        process.env.ConnectSDK_ApiKey,
-        process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName,
-        process.env.ConnectSDK_UserPassword)
-
-	var images = connectSdk
-		.images()
-		.withId('200261415-001')
-
-	images.execute(function(err, response) {
-		if (err) throw err
-		console.log(JSON.stringify(response.images[0]))
-	})
-
-**Download an image:**
-
-    var connectSdk = new ConnectSdk (
-        process.env.ConnectSDK_ApiKey,
-        process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName,
-        process.env.ConnectSDK_UserPassword)
-
-    var download = connectSdk
-        .download()
-        .withId('467073457')
-
-    download.execute(function(err, response) {
+```
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.download().withId('467073457').execute(
+    function(err, response) {
         if (err) throw err
         console.log(response.uri)
-    })
-
-**Get an access token for use with the Getty Images Connect API:**
-
-    var connectSdk = new ConnectSdk (
-        process.env.ConnectSDK_ApiKey,
-        process.env.ConnectSDK_ApiSecret,
-        process.env.ConnectSDK_UserName,
-        process.env.ConnectSDK_UserPassword)
-
-    connectSdk.getAccessToken(function(err, response) {
-        if (err) throw err
-        console.log(response.access_token)
-    })
-
+    });
+```
+### Get an access token for use with the Getty Images Connect API
+```
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.getAccessToken(function(err, response) {
+    if (err) throw err
+    console.log(response.access_token);
+});
+```
 ## Help & Support
 
-* [Getty Images API](http://developer.gettyimages.com/)
+* [Getty Images API](http://developers.gettyimages.com/)
 * [Contact Developer Support](mailto:developersupport@gettyimages.com)
 * [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
+* [Discuss on Gitter](https://gitter.im/gettyimages/gettyimages-api_nodejs)
