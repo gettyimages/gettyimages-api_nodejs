@@ -1,8 +1,8 @@
-var api = require("../../gettyimages-api");
+var Api = require("../../gettyimages-api");
 var nock = require("nock");
 
 module.exports = function () {
-    this.When(/^I request for any image to be downloaded$/, function (callback) {
+    this.When(/^I request for any image to be downloaded$/,{timeout: 0}, function (callback) {
         var context = this;
         var imageId = "123";
         nock("https://api.gettyimages.com")
@@ -22,32 +22,33 @@ module.exports = function () {
             .query({ auto_download: false, height: context.height })
             .reply(200, {});
 
-        var client = new api({ apiKey: this.apikey, apiSecret: this.apisecret, username: this.username, password: this.password });
+        var client = new Api({ apiKey: this.apikey, apiSecret: this.apisecret, username: this.username, password: this.password });
         try {
             var download = client.downloads().images();
+        
+            download = download.withId(imageId);
+
+            if (context.fileType) {
+                download = download.withFileType(context.fileType);
+            }
+
+            if (context.height) {
+                download = download.withHeight(context.height);
+            }
+
+            download.execute(function (err, response) {
+                if (err) {
+                    callback(err);
+                } else {
+                    this.response = response;
+                    callback();
+                }
+            });
         }
         catch (error) {
             context.error = error;
             callback();
         }
-        download = download.withId(imageId);
-
-        if (context.fileType) {
-            download = download.withFileType(context.fileType);
-        }
-
-        if (context.height) {
-            download = download.withHeight(context.height);
-        }
-
-        download.execute(function (err, response) {
-            if (err) {
-                callback(err);
-            } else {
-                this.response = response;
-                callback();
-            }
-        });
     });
 
     this.Then(/^I receive an error$/, function (callback) {

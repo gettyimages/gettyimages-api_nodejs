@@ -20,6 +20,12 @@
             "always"
         ]
     },
+    "ecmaFeatures": {
+        "blockBindings": true,
+        "forOf": true,
+        "modules": true,
+        "classes": true
+    },
     "env": {
         "node": true,
         "browser": false

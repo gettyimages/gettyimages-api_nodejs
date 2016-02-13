@@ -7,7 +7,7 @@
 			"request": "launch",
 			"program": "./node_modules/.bin/cucumber-js",
 			"stopOnEntry": false,
-			"args": ["-r", "test/support","-r", "test/step_definitions","features/authentication.feature"],
+			"args": ["-r", "test/support","-r", "test/step_definitions","features/events.feature"],
 			"cwd": ".",
 			"runtimeExecutable": null,
 			"runtimeArgs": [

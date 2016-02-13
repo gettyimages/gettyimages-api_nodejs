@@ -1,10 +1,15 @@
-var api = require("../../gettyimages-api");
+var Api = require("../../gettyimages-api");
 var nock = require("nock");
-
-
 
 module.exports = function () {
     this.When(/^I retrieve collections$/, function (callback) {
+        var testCredentials = { 
+            apiKey: this.apikey,
+            apiSecret: this.apisecret,
+            username: this.username,
+            password: this.password
+        };
+        
         nock("https://api.gettyimages.com")
             .post("/oauth2/token", "client_id=apikey&client_secret=apisecret&grant_type=client_credentials")
             .reply(200, {
@@ -27,15 +32,21 @@ module.exports = function () {
             .get("/v3/collections")
             .matchHeader("Authorization", "Bearer resource_owner_access_token")
             .reply(200, {});
-        var client = new api({ apiKey: this.apikey, apiSecret: this.apisecret, username: this.username, password: this.password });
-        client.collections().execute(function (err, response) {
-            if (err) {
-                callback(err);
-            } else {
-                this.response = response;
-                callback();
-            }
-        });
+        try
+        {
+            var client = new Api(testCredentials);
+            client.collections().execute(function (err, response) {
+                if (err) {
+                    callback(err);
+                } else {
+                    this.response = response;
+                    callback();
+                }
+            });
+        }
+        catch (err) {
+            callback(err);
+        }
     });
 
     this.Then(/^I recieve an error stating "([^"]*)"$/, function (arg1, callback) {

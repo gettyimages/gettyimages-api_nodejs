@@ -1,3 +1,4 @@
+"use strict";
 var Credentials = require("./lib/credentials");
 var Downloads = require("./lib/downloads");
 var Images = require("./lib/images");
@@ -8,24 +9,54 @@ var Countries = require("./lib/countries");
 var Events = require("./lib/events");
 var Videos = require("./lib/videos");
 
-module.exports = function GettyImagesApi(credentials, hostName) {
+const _hostName = new WeakMap();
+const _credentialOptions = new WeakMap();
+const _credentials = new WeakMap();
 
-    if (!credentials.apiKey) {
-        throw new SdkException("must specify an apiKey");
+class GettyImagesApi {
+    
+    get credentials() {
+        return _credentialOptions.get(this);
+    }
+    set credentials(value) {
+        _credentialOptions.set(this,value);
+    }
+    get creds() {
+        return _credentials.get(this);
+    }
+    set creds(value) {
+        _credentials.set(this,value);
+    }
+    
+    get hostName() {
+        return _hostName.get(this);
+    }
+    
+    set hostName(value) {
+        _hostName.set(this,value);
+    }
+    constructor(credentials, hostName) {
+        if (!credentials.apiKey) {
+            throw new SdkException("must specify an apiKey");
+        }
+
+        if (!credentials.apiSecret) {
+            throw new SdkException("must specify an apiSecret");
+        }
+
+        if (!hostName) {
+            hostName = "api.gettyimages.com";
+        }
+
+        this.hostName = hostName;
+        this.credentials = credentials;
+        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refreshToken, hostName);
     }
 
-    if (!credentials.apiSecret) {
-        throw new SdkException("must specify an apiSecret");
-    }
-
-    if (!hostName) {
-        hostName = "api.gettyimages.com";
-    }
-
-    var creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refreshToken, hostName);
-
-    this.getAccessToken = function (next) {
-        if (creds.getRefreshToken()) {
+    getAccessToken(next) {
+        var creds = this.creds;
+        
+        if (creds.RefreshToken) {
             creds.refreshAccessToken(function (err, accessToken) {
                 if (err) {
                     next(err, null);
@@ -42,33 +73,35 @@ module.exports = function GettyImagesApi(credentials, hostName) {
                 }
             });
         }
-    };
+    }
 
-    this.images = function () {
-        return new Images(creds, hostName);
-    };
-    
-    this.videos = function () {
-        return new Videos(creds, hostName);
-    };
+    images() {
+        return new Images(this.creds, this.hostName);
+    }
 
-    this.search = function () {
-        return new Search(creds, hostName);
-    };
+    videos() {
+        return new Videos(this.creds, this.hostName);
+    }
 
-    this.collections = function () {
-        return new Collections(creds, hostName);
-    };
+    search() {
+        return new Search(this.creds, this.hostName);
+    }
 
-    this.countries = function () {
-        return new Countries(creds, hostName);
-    };
+    collections() {
+        return new Collections(this.creds, this.hostName);
+    }
 
-    this.events = function () {
-        return new Events(creds, hostName);
-    };
+    countries() {
+        return new Countries(this.creds, this.hostName);
+    }
 
-    this.downloads = function () {
-        return new Downloads(creds, hostName);
-    };
-};
+    events() {
+        return new Events(this.creds, this.hostName);
+    }
+
+    downloads() {
+        return new Downloads(this.creds, this.hostName);
+    }
+}
+
+module.exports = GettyImagesApi;

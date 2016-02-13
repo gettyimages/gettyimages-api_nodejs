@@ -28,7 +28,7 @@ module.exports = function () {
     this.Given(/^I have a list of image ids I want details on$/, function (callback) {
         this.imageIds = [];
         for (var i = 0; i < 4; i++) {
-            this.imageIds.push(i.toString());
+            this.imageIds[this.imageIds.length] = i.toString();
         }
         callback();
     });
@@ -93,11 +93,18 @@ module.exports = function () {
                 images = images.withResponseField(field);
             }, this);
         }
-        images.execute(function (err, response) {
-            context.error = err;
-            context.response = response;
+        try
+        {
+            images.execute(function (err, response) {
+                context.error = err;
+                context.response = response;
+                callback();
+            });
+        }
+        catch (exception) {
+            context.error = exception;
             callback();
-        });
+        }
     }
     function getReplyStatusCode(context) {
         if (context.imageId === "invalid_id") {
