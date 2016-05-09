@@ -45,7 +45,7 @@ client.images().withId('200261415-001').execute(
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
 var client = new api (creds);
-client.download().withId('467073457').execute(
+client.downloads().images().withId('467073457').execute(
     function(err, response) {
         if (err) throw err
         console.log(response.uri)
