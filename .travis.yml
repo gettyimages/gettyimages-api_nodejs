@@ -1,20 +1,23 @@
 language: node_js
 node_js:
-- 4.2.4
+- 4
+- 6
 sudo: false
 script:
   - npm install
   - npm run coveralls
+after_script:
+    - ./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info
 addons:
   code_climate:
-    repo_token: 94ec2b4f3f50ee0c578e96c4aa4e7dafd2313fd74672ad37daa5784147ffdd5b
+      repo_token: secure: "YnYdlHuU76mB1M4xVGhwqs/BAKm5gFXV/ozOCHSW14Z3x/xslKcz/rs1hPe9flhNAmtLP7yB1cmCUWmGOlF3epXOZrSlhaPSXq4/LP4NpvYJRl1uT1hy7laVViItSuTF9MTMYNhodkRx59DQjTqSGqzHpjndfQuyF5d9cIDgCeA="
 notifications:
   slack: 
     rooms:
     - secure: "VZLnmbqpWcIYjmtxdZePaqPr0RGfSnbBT902TyMLuVar/wccXgQXsgfNr5CbbPfob8QuiryllR1k84QpbmluWLsTTUbK01L6jw51GNSQ7CL6htsGszHcaHRabjlT1/HCfzZV9adIFsmxGp+sQAp+Pb8lKgGInC6oAAJFk7t6UH8="
   webhooks:
     urls:
-    - https://webhooks.gitter.im/e/7fd34e135d78698298e6
+        - secure: "Nvz33hP3Wi0GHOgVeXkdhT4uTHlnLJfu3u6MCoWWgBTxgt8hLTl1UX3mfAvmlpowaumcxUX0wTDv4XCuKi6ktc6VSEz9K7OK+aVT+qMDF/hThEvxFawJLmtSdYPFH2rbNzG8AWTqc8OmJ5MqttYb9dWoZdtGorIW7Veof23wZfo="
     on_success: always
     on_failure: always
     on_start: never
