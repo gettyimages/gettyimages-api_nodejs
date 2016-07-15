@@ -2,6 +2,9 @@ language: node_js
 node_js:
 - 4.2.4
 sudo: false
+script:
+  - npm install
+  - npm run coveralls
 addons:
   code_climate:
     repo_token: 94ec2b4f3f50ee0c578e96c4aa4e7dafd2313fd74672ad37daa5784147ffdd5b
