@@ -9,14 +9,12 @@ addons:
   code_climate:
     repo_token: 94ec2b4f3f50ee0c578e96c4aa4e7dafd2313fd74672ad37daa5784147ffdd5b
 notifications:
+  slack: 
+    rooms:
+    - gettyimages:5Tbr7O9MMmFWWFNGPV4JYW7l#notices-gettyapi
   webhooks:
     urls:
     - https://webhooks.gitter.im/e/7fd34e135d78698298e6
-    on_success: always
-    on_failure: always
-    on_start: never
-  slack:
-    secure: ce2IoFun/72jtzVu5gomGBCjb/eHCPaH+I84sUzCEvL4LJwBtHW5YF/m/ftlNPZ0DCuRx6uLlZUZlu7mEubtWNVoVpSo2m8JFeef0Bn3+C7OL3jsZh6FExM5zeRYtEAGmmr4W816EfROBHWmtD0vBG24ffrEz8rE2fO9XGpauK3KBoKjTVMNF5CBZlDqjkgLrWNtuqhwzULCf83qaw5hFboXTFFgJG9fQR3mlYK7GkcEO7ji292j1yaO7pMj8MmIHTEk6sNX+vzwC8Rh6R9RxAstWzW3zmGqved7tmrCIAiuecOz9wcckBkJmELR66o5Geur7PB7U7Yi9+ox7cyHpkFVS5/Y4tSNAbU5Rt0XrcdkQ8v1r2Z4GdvId2bZFGM6JtxiHD1fRivt3SRumtm/vlAZTBxeXuyfz8cfYEVucnFWIMeleZnGZ/7drXTh83gwvJ+rL/I3suW31Oi0SheiEOTITS7GO9GHHstHeYVS9B9Yv+ZUwSpI5deonm0Y7ixzZnv8NqIq9em8vD7BeSxvxk/5v0plQLKWeCL6msONtwTfqaJwuV2k1KwwuFAHkcMqKEKfJXWSYQM8C+b6mH5gU0H9i6wWsdT0PFaX/rOLNofj61WIrLlZZm0e75uypamCCgURiOhOpQMll882EhzJ4kVGX0iiy4cjZNMarS3oiRc=
     on_success: always
     on_failure: always
     on_start: never
