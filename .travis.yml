@@ -11,7 +11,7 @@ addons:
 notifications:
   slack: 
     rooms:
-    - gettyimages:5Tbr7O9MMmFWWFNGPV4JYW7l#notices-gettyapi
+    - secure: "FnUb6qW9h/1EP7kGdUdSyuDGwjDn5tc8/mWyVtO98vXZb3YrgfRvFfxKLS1BBn0whpkE8RKJpc1vjmBo4RKtvlGpqRnEvU3mfOH4/rn7O5sCoQ6UOTJND2dFZ5Dl7prDOwyb+HRtUm0cwLCOB00plvV+wOHYaOtGN4BsJ5589GEqsHv077qXWY6OprByhrxRByf3mUQppWGi3s7kWV7Ee3Pvr4FyomfeHRccxjdfFkVaXtvexh9LLI6BvrpMV7zPt51814WXbfxKejvJiIiPqHJ1bf4xsuuRpChe/QxQYEJy+vuNW7JyWb0pC6LGjAu14Wy1eTkrLDZqluNJAwzQe0UBAU+otwl7JMXF8LjfrlK8aI8+EI7xppJM4vuPFR0Iii/kPZSuzwZRLgZk5OB/XnxUxQqnoy3Bvpxj0nsQMpnkZ/IOlDbmC0DLjB0Fxy3LsNp8EHfVCiD6WG4vvIavhJMCT/og3Tos8CTyiqeWoI08qodm/qkLJZSD8HMVXChlOmnnyY1M98tyO7vo61bhsHo5RwUmx2/wG7hheV14KkRAnmz100tqVLrYOUgMLU044aTLxtm7fclN2nHPCqUf+hvxQPauXOFgqjGitTA81NZ38j+17753NkwOHzF3nLpDCSV95FcYsTqsGHN+z+s3W0w5X9hCxXcyY41DZas1exQ="
   webhooks:
     urls:
     - https://webhooks.gitter.im/e/7fd34e135d78698298e6
