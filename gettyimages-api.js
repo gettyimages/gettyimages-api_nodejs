@@ -59,17 +59,17 @@ class GettyImagesApi {
         if (creds.RefreshToken) {
             creds.refreshAccessToken(function (err, accessToken) {
                 if (err) {
-                    next(err, null);
+                    return next(err, null);
                 } else {
-                    next(null, accessToken);
+                    return next(null, accessToken);
                 }
             });
         } else {
             creds.getAccessToken(function (err, accessToken) {
                 if (err) {
-                    next(err, null);
+                    return next(err, null);
                 } else {
-                    next(null, accessToken);
+                    return next(null, accessToken);
                 }
             });
         }

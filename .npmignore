@@ -7,7 +7,7 @@ coverage
 features
 test
 .gitmodules
-.eslintrc.json
+.eslintrc.yml
 .npmignore
 .travis.yml
 jsconfig.json
