@@ -16,6 +16,8 @@
 The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimages-api). Install in your workspace with:
 
     $ npm install --save gettyimages-api
+## Sample App
+There is a very simple sample app that uses the npm package [here](https://github.com/gettyimages/gettyimages-api_nodejs_sample).
 
 ## Examples
 ### Search for one or more images
