@@ -2,11 +2,10 @@
 
 # Deprecated
 
-We have decided to stop development work on platform-specific SDKs as of November 2016. The API is still alive and under active feature development. Current documentation can be found at [developers.gettyimages.com/api/docs/](http://developers.gettyimages.com/api/docs/)
-
-SDK source code remains open source, providing a technology example of interaction with the Getty Images API. We will no longer take pull requests for these repositories.
-
+As of November 2016, we will no longer be improving or maintaining the language-specific SDKs. The API is still alive and under active feature development. Current documentation can be found at [developers.gettyimages.com/api/docs/](http://developers.gettyimages.com/api/docs/).
+SDK source code remains open source, providing a technology example of interaction with the Getty Images API. We will no longer take pull requests for these repositories, but feel free to fork them for your own modifications.
 ---
+
 
 ## Prerequesites
 * [Getty Images API account](https://api.gettyimages.com/member/register)
