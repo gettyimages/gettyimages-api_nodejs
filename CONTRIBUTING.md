@@ -8,7 +8,6 @@ please contribute your fixes back to us!
 ```
 git clone git@github.com:YOUR-USERNAME/gettyimages-api_nodejs.git
 cd gettyimages-api_nodejs
-git submodule update --init
 npm install
 ```
 
@@ -28,16 +27,10 @@ testing. You may want to familiarize yourself with
 if you haven't used them before. 
 
 Ideally, if you add completely new functionality, you would write your
-scenarios (tests) first. Since the scenarios are in a separate git
-repository (included as a git submodule), you'd need to fork and clone 
-that repository as well.
-```
-git clone git@github.com:YOUR-USERNAME/gettyimages-api_bdd.git
-```
-This allows us to use the same scenarios across all the implementations
-of our SDKs.
+scenarios (tests) first.
 
 ### Increase the Chances of Your Pull Request Being Accepted
+
 Before [submitting a pull request](https://help.github.com/articles/creating-a-pull-request/)
 , here's a few tips:
 + Follow our coding style. The linter is your friend here.
@@ -48,15 +41,12 @@ the step of fixing them after you've submitted the pull requests
 and the automated build fails.
 + Write a [good commit message](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 
-```
+
+```sh
 npm test
 npm run lint
 ```
+
 If the tests pass and the linter returns no errors, your pull request 
 will be ***much*** more likely to be accepted.
-
-
-
-
-
 

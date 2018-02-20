@@ -1,12 +1,5 @@
 # Getty Images API Node.js SDK
 
-# Deprecated
-
-As of November 2016, we will no longer be improving or maintaining the language-specific SDKs. The API is still alive and under active feature development. Current documentation can be found at [developers.gettyimages.com/api/docs/](http://developers.gettyimages.com/api/docs/).
-SDK source code remains open source, providing a technology example of interaction with the Getty Images API. We will no longer take pull requests for these repositories, but feel free to fork them for your own modifications.
----
-
-
 ## Prerequesites
 * [Getty Images API account](https://api.gettyimages.com/member/register)
 * [Node.js](http://nodejs.org)
@@ -15,12 +8,16 @@ SDK source code remains open source, providing a technology example of interacti
 ## Getting Started
 The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimages-api). Install in your workspace with:
 
-    $ npm install --save gettyimages-api
+```sh
+$ npm install --save gettyimages-api
+```
+
 ## Sample App
 There is a very simple sample app that uses the npm package [here](https://github.com/gettyimages/gettyimages-api_nodejs_sample).
 
 ## Examples
 ### Search for one or more images
+
 ```javascript
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
@@ -32,6 +29,7 @@ client.search().images().withPage(1).withPageSize(1).withPhrase('beach')
     });
 ```
 ### Get detailed information for one or more images
+
 ```javascript
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
@@ -55,6 +53,7 @@ client.downloads().images().withId('503928206').execute(
     });
 ```
 ### Get details and download a video
+
 ```javascript
 // Gets some info about a video and then downloads the NTSC SD version
 
