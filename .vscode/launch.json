@@ -2,23 +2,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch",
 			"type": "node",
 			"request": "launch",
-			"program": "${workspaceRoot}//node_modules/.bin/cucumber-js",
-			"stopOnEntry": false,
-			"args": ["-r", "test/support","-r", "test/step_definitions","features/events.feature"],
-			"cwd": "${workspaceRoot}/",
-			"runtimeExecutable": null,
-			"runtimeArgs": [
-				"--nolazy"
-			],
-			"env": {
-				"NODE_ENV": "development"
-			},
-			"externalConsole": false,
-			"sourceMaps": false,
-			"outDir": null
+			"name": "Current Ava Test",
+			"program": "${workspaceRoot}/node_modules/ava/profile.js",
+			"args": ["${file}"],
+			"sourceMaps": false
 		},
 		{
 			"name": "Attach",

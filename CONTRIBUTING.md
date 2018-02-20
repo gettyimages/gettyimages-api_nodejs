@@ -15,19 +15,16 @@ npm install
 Before you change anything, run the tests. They *should* all pass
 as we don't commit to master with failing tests, but hey, you never
 know!
-```
+
+```sh
 npm test
+npm run unittest
 ```
 This will also show you where we're at with code coverage.
 
-We use [CucumberJS](https://github.com/cucumber/cucumber-js) for 
-testing. You may want to familiarize yourself with 
-[Gherkin](https://github.com/cucumber/cucumber/wiki/Gherkin) and 
-[BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
-if you haven't used them before. 
+The tests are mostly written with [CucumberJS](https://github.com/cucumber/cucumber-js), but we are in the middle of converting to [Ava](https://github.com/avajs/ava). 
 
-Ideally, if you add completely new functionality, you would write your
-scenarios (tests) first.
+Ideally, if you add completely new functionality, you would write your tests first.
 
 ### Increase the Chances of Your Pull Request Being Accepted
 
