@@ -81,139 +81,139 @@ test.beforeEach(t=>{
             .reply(200, {});
 });
 
-test.cb("SearchImages: withPhrase will include phrase in query", t => {  
+test.cb("SearchImagesCreative: withPhrase will include phrase in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withAgeOfPeople will include age_of_people in query", t => {  
+test.cb("SearchImagesCreative: withAgeOfPeople will include age_of_people in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withAgeOfPeople(["adult", "newborn", "0-1_months"]).withAgeOfPeople(["12-17_months", "mature_adult"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withArtist will include artists in query", t => {  
+test.cb("SearchImagesCreative: withArtist will include artists in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withArtist(["roman makhmutov", "Linda Raymond"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withCollectionCode will include codes in query", t => {  
+test.cb("SearchImagesCreative: withCollectionCode will include codes in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withCollectionCode(["WRI", "ARF"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withCollectionsFilterType will include collections_filter_type in query", t => {  
+test.cb("SearchImagesCreative: withCollectionsFilterType will include collections_filter_type in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withCollectionsFilterType("exclude").execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withColor will include color in query", t => {  
+test.cb("SearchImagesCreative: withColor will include color in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withColor("#002244").execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withCompostition will include compostition in query", t => {  
+test.cb("SearchImagesCreative: withCompostition will include compostition in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withComposition(["abstract", "headshot"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withEmbedContentOnly will include embed_content_only in query", t => {  
+test.cb("SearchImagesCreative: withEmbedContentOnly will include embed_content_only in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withEmbedContentOnly().execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withEthnicity will include ethnicity in query", t => {  
+test.cb("SearchImagesCreative: withEthnicity will include ethnicity in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withEthnicity(["black", "japanese"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withExcludeNudity will include exclude_nudity in query", t => {  
+test.cb("SearchImagesCreative: withExcludeNudity will include exclude_nudity in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withExcludeNudity().execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withResponseField will include fields in query", t => {  
+test.cb("SearchImagesCreative: withResponseField will include fields in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withResponseField(["asset_family", "id"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withFileType will include file_types in query", t => {  
+test.cb("SearchImagesCreative: withFileType will include file_types in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withFileType(["eps", "jpg"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withGraphicalStyle will include graphical_styles in query", t => {  
+test.cb("SearchImagesCreative: withGraphicalStyle will include graphical_styles in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withGraphicalStyle(["fine_art", "illustration"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withKeywordId will include keyword_ids in query", t => {  
+test.cb("SearchImagesCreative: withKeywordId will include keyword_ids in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withKeywordId([1234, 5678]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withLicenseModel will include license_models in query", t => {  
+test.cb("SearchImagesCreative: withLicenseModel will include license_models in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withLicenseModel(["rightsmanaged", "royaltyfree"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withMinimumSize will include minimum_size in query", t => {  
+test.cb("SearchImagesCreative: withMinimumSize will include minimum_size in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withMinimumSize("small").execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withNumberOfPeople will include number_of_people in query", t => {  
+test.cb("SearchImagesCreative: withNumberOfPeople will include number_of_people in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withNumberOfPeople(["one", "group"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withOrientation will include orientations in query", t => {  
+test.cb("SearchImagesCreative: withOrientation will include orientations in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withOrientation(["horizontal", "square"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withPage will include page in query", t => {  
+test.cb("SearchImagesCreative: withPage will include page in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withPage(3).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withPageSize will include page_size in query", t => {  
+test.cb("SearchImagesCreative: withPageSize will include page_size in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withPageSize(50).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withPrestigeContentOnly will include prestige_content_only in query", t => {  
+test.cb("SearchImagesCreative: withPrestigeContentOnly will include prestige_content_only in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withPrestigeContentOnly().execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withProductType will include product_types in query", t => {  
+test.cb("SearchImagesCreative: withProductType will include product_types in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute((err, response) => {
     }));
 });
 
-test.cb("SearchImages: withSortOrder will include sort_order in query", t => {  
+test.cb("SearchImagesCreative: withSortOrder will include sort_order in query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.searchimagescreative().withPhrase("cat").withSortOrder("newest").execute((err, response) => {
     }));

@@ -9,7 +9,9 @@ var SearchImagesEditorial = require("./lib/searchimageseditorial");
 var Collections = require("./lib/collections");
 var Countries = require("./lib/countries");
 var Events = require("./lib/events");
-var Videos = require("./lib/videos");
+var SearchVideos = require("./lib/searchvideos");
+var SearchVideosCreative = require("./lib/searchvideoscreative");
+var SearchVideosEditorial = require("./lib/searchvideoseditorial");
 
 const _hostName = new WeakMap();
 const _credentialOptions = new WeakMap();
@@ -81,8 +83,16 @@ class GettyImagesApi {
         return new Images(this.creds, this.hostName);
     }
 
-    videos() {
-        return new Videos(this.creds, this.hostName);
+    searchvideos() {
+        return new SearchVideos(this.creds, this.hostName);
+    }
+
+    searchvideoscreative() {
+        return new SearchVideosCreative(this.creds, this.hostName);
+    }
+
+    searchvideoseditorial() {
+        return new SearchVideosEditorial(this.creds, this.hostName);
     }
 
     searchimages() {
