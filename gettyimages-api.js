@@ -3,7 +3,9 @@ var Credentials = require("./lib/credentials");
 var Downloads = require("./lib/downloads");
 var Images = require("./lib/images");
 var SdkException = require("./lib/sdkexception");
-var Search = require("./lib/search");
+var SearchImages = require("./lib/searchimages");
+var SearchImagesCreative = require("./lib/searchimagescreative");
+var SearchImagesEditorial = require("./lib/searchimageseditorial");
 var Collections = require("./lib/collections");
 var Countries = require("./lib/countries");
 var Events = require("./lib/events");
@@ -83,8 +85,16 @@ class GettyImagesApi {
         return new Videos(this.creds, this.hostName);
     }
 
-    search() {
-        return new Search(this.creds, this.hostName);
+    searchimages() {
+        return new SearchImages(this.creds, this.hostName);
+    }
+
+    searchimagescreative() {
+        return new SearchImagesCreative(this.creds, this.hostName);
+    }
+
+    searchimageseditorial() {
+        return new SearchImagesEditorial(this.creds, this.hostName);
     }
 
     collections() {
