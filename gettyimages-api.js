@@ -9,6 +9,7 @@ var SearchImagesEditorial = require("./lib/searchimageseditorial");
 var Collections = require("./lib/collections");
 var Countries = require("./lib/countries");
 var Events = require("./lib/events");
+var Videos = require("./lib/videos");
 var SearchVideos = require("./lib/searchvideos");
 var SearchVideosCreative = require("./lib/searchvideoscreative");
 var SearchVideosEditorial = require("./lib/searchvideoseditorial");
@@ -81,6 +82,10 @@ class GettyImagesApi {
 
     images() {
         return new Images(this.creds, this.hostName);
+    }
+
+    videos() {
+        return new Videos(this.creds, this.hostName);
     }
 
     searchvideos() {
