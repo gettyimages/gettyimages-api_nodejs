@@ -1,6 +1,7 @@
 "use strict";
 var Credentials = require("./lib/credentials");
-var Downloads = require("./lib/downloads");
+var VideoDownloads = require("./lib/downloadsvideos");
+var ImageDownloads = require("./lib/downloadsimages");
 var Images = require("./lib/images");
 var SdkException = require("./lib/sdkexception");
 var SearchImages = require("./lib/searchimages");
@@ -124,8 +125,12 @@ class GettyImagesApi {
         return new Events(this.creds, this.hostName);
     }
 
-    downloads() {
-        return new Downloads(this.creds, this.hostName);
+    downloadsvideos() {
+        return new VideoDownloads(this.creds, this.hostName);
+    }
+
+    downloadsimages() {
+        return new ImageDownloads(this.creds, this.hostName);
     }
 }
 
