@@ -14,6 +14,7 @@ var Videos = require("./lib/videos");
 var SearchVideos = require("./lib/searchvideos");
 var SearchVideosCreative = require("./lib/searchvideoscreative");
 var SearchVideosEditorial = require("./lib/searchvideoseditorial");
+var CustomRequest = require("./lib/customrequest");
 
 const _hostName = new WeakMap();
 const _credentialOptions = new WeakMap();
@@ -131,6 +132,10 @@ class GettyImagesApi {
 
     downloadsimages() {
         return new ImageDownloads(this.creds, this.hostName);
+    }
+
+    customrequest() {
+        return new CustomRequest(this.creds, this.hostName);
     }
 }
 
