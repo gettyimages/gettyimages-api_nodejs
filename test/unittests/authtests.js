@@ -42,6 +42,7 @@ test.cb("Resource Owner Grant should return an access token when an api key, sec
 test.cb("Refresh Token should return an access token when an api key, secret, and refresh token are provided", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret", refresh_token:"refreshtoken" }, null);
     t.end(client.getAccessToken((err, response) => {
-        t.is(response.access_token, "accesken");
+        t.is(response.access_token, "accesstoken");
     }));
 });
+

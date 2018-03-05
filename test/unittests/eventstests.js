@@ -26,13 +26,13 @@ test.cb("Events: When given a single id, the id will be part of the path", t => 
     }));
 });
 
-test.cb("Events: When given a list of ids, the ids will be part of the query", t => {  
+test.cb("Events: When given an array of ids, the ids will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.events().withIds(["456", "789"]).execute((err, response) => {
     }));
 });
 
-test.cb("Events: When given a list of fields, the fields will be part of the query", t => {  
+test.cb("Events: When given an array of fields, the fields will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.events().withId("101112").withResponseField("id").withResponseField("image_count").execute((err, response) => {
     }));

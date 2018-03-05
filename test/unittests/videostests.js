@@ -26,13 +26,13 @@ test.cb("Videos: When given a single id, the id will be part of the path", t => 
     }));
 });
 
-test.cb("Videos: When given a list of ids, the ids will be part of the query", t => {  
+test.cb("Videos: When given an array of ids, the ids will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.videos().withIds(["456", "789"]).execute((err, response) => {
     }));
 });
 
-test.cb("Videos: When given a list of fields, the fields will be part of the query", t => {  
+test.cb("Videos: When given an array of fields, the fields will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
      t.end(client.videos().withId("101112").withResponseField(["id", "artist"]).execute((err, response) => {
     }));
