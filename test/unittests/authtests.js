@@ -25,24 +25,24 @@ test.beforeEach(t=>{
                 });
 });
 
-test.cb("Client Credentials should return an access token when an api key and secret are provided", t => {  
+test("Client Credentials should return an access token when an api key and secret are provided", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-    t.end(client.getAccessToken((err, response) => {
-        t.is(response.access_token, "client_credentials_access_token");
-    }));
+    return Promise.resolve(client.getAccessToken()).then(res => {
+        t.is(res.access_token, "client_credentials_access_token");
+    });
 });
 
-test.cb("Resource Owner Grant should return an access token when an api key, secret, username, and password are provided", t => {  
-    var client = new api({ apiKey: "apikey", apiSecret: "apisecret", password: "" }, null);
-    t.end(client.getAccessToken((err, response) => {
-        t.is(response.access_token, "resource_owner_access_token");
-    }));
+test("Resource Owner Grant should return an access token when an api key, secret, username, and password are provided", t => {  
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret", username: "username", password: "password" }, null);
+    return Promise.resolve(client.getAccessToken()).then(res => {
+        t.is(res.access_token, "resource_owner_access_token");
+    });
 });
 
-test.cb("Refresh Token should return an access token when an api key, secret, and refresh token are provided", t => {  
+test("Refresh Token should return an access token when an api key, secret, and refresh token are provided", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret", refresh_token:"refreshtoken" }, null);
-    t.end(client.getAccessToken((err, response) => {
-        t.is(response.access_token, "accesstoken");
-    }));
+    return Promise.resolve(client.getAccessToken()).then(res => {
+        t.is(res.access_token, "accesstoken");
+    });
 });
 

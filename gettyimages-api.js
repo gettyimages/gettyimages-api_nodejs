@@ -57,30 +57,18 @@ class GettyImagesApi {
 
         this.hostName = hostName;
         this.credentials = credentials;
-        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refreshToken, hostName);
+        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refresh_token, hostName);
     }
 
-    // getAccessToken(next) {
-    //     var creds = this.creds;
+    getAccessToken() {
+        var creds = this.creds;
         
-    //     if (creds.RefreshToken) {
-    //         creds.refreshAccessToken(function (err, accessToken) {
-    //             if (err) {
-    //                 return next(err, null);
-    //             } else {
-    //                 return next(null, accessToken);
-    //             }
-    //         });
-    //     } else {
-    //         creds.getAccessToken(function (err, accessToken) {
-    //             if (err) {
-    //                 return next(err, null);
-    //             } else {
-    //                 return next(null, accessToken);
-    //             }
-    //         });
-    //     }
-    // }
+        if (creds.refreshToken) {
+            return creds.refreshAccessToken();
+        } else {
+            return creds.getAccessToken();
+        }
+    }
 
     images() {
         return new Images(this.creds, this.hostName);

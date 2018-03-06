@@ -35,6 +35,6 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/cucumber-js -r test/support -r test/step_definitions features/",
-    "unittest": "./node_modules/.bin/ava --verbose test/unittests/collectionstests.js"
+    "unittest": "./node_modules/.bin/ava --verbose test/unittests"
   }
 }

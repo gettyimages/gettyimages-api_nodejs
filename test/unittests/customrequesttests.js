@@ -12,36 +12,41 @@ test.beforeEach(t=>{
             })
             .get("/v3/search/images")
             .query({ "phrase": "cat", "file_types": "eps"})
-            .reply(200)
+            .reply(200, {response : "response"})
             .post("/v3/downloads/images/123")
             .query({ "file_type": "jpg", "auto_download": "false" })
-            .reply(200)
+            .reply(200, {response : "response"})
             .delete("/v3/boards/123?")
-            .reply(204)
+            .reply(204, {response : "response"})
             .put("/v3/boards/123?")
-            .reply(200);
+            .reply(204, {response : "response"});
 });
 
-test.cb("CustomRequest: A get method will create the appropriate request", t => {  
+test("CustomRequest: A get method will create the appropriate request", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.customrequest().withRoute("search/images").withMethod("get").withQueryParameters({"phrase": "cat", "file_types": "eps"}).execute((err, response) => {
-    }));
+    return Promise.resolve(client.customrequest().withRoute("search/images").withMethod("get").withQueryParameters({"phrase": "cat", "file_types": "eps"}).execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
 
-test.cb("CustomRequest: A post method will create the appropriate request", t => {  
+test("CustomRequest: A post method will create the appropriate request", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.customrequest().withRoute("downloads/images/123").withMethod("post").withQueryParameters({"file_type": "jpg", "auto_download": "false"}).execute((err, response) => {
-    }));
+    return Promise.resolve(client.customrequest().withRoute("downloads/images/123").withMethod("post").withQueryParameters({"file_type": "jpg", "auto_download": "false"}).execute()).then(res => {
+        t.is(res.response, "response");
+    });
+
 });
 
-test.cb("CustomRequest: A delete method will create the appropriate request", t => {  
+test("CustomRequest: A delete method will create the appropriate request", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.customrequest().withRoute("boards/123").withMethod("delete").execute((err, response) => {
-    }));
+    return Promise.resolve(client.customrequest().withRoute("boards/123").withMethod("delete").execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
 
-test.cb("CustomRequest: A put method will create the appropriate request", t => {  
+test("CustomRequest: A put method will create the appropriate request", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.customrequest().withRoute("boards/123").withMethod("put").withBody({"name": "this board", "description": "some description"}).execute((err, response) => {
-    }));
+    return Promise.resolve(client.customrequest().withRoute("boards/123").withMethod("put").withBody({"name": "this board", "description": "some description"}).execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });

@@ -11,31 +11,34 @@ test.beforeEach(t=>{
                 expires_in: "1800"
             })
             .get("/v3/events/123")
-            .reply(200)
+            .reply(200, {response : "response"})
             .get("/v3/events")
             .query({ "ids": encodeURI(["456", "789"].join(",")) })
-            .reply(200)
+            .reply(200, {response : "response"})
             .get("/v3/events/101112")
             .query({ "fields": encodeURI(["id", "image_count"].join(","))})
-            .reply(200);
+            .reply(200, {response : "response"});
 });
 
-test.cb("Events: When given a single id, the id will be part of the path", t => {  
+test("Events: When given a single id, the id will be part of the path", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.events().withIds(123).execute((err, response) => {
-    }));
+    return Promise.resolve(client.events().withIds(123).execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
 
-test.cb("Events: When given an array of ids, the ids will be part of the query", t => {  
+test("Events: When given an array of ids, the ids will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.events().withIds(["456", "789"]).execute((err, response) => {
-    }));
+    return Promise.resolve(client.events().withIds(["456", "789"]).execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
 
-test.cb("Events: When given an array of fields, the fields will be part of the query", t => {  
+test("Events: When given an array of fields, the fields will be part of the query", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.events().withId("101112").withResponseField("id").withResponseField("image_count").execute((err, response) => {
-    }));
+    return Promise.resolve(client.events().withId("101112").withResponseField("id").withResponseField("image_count").execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
 
 
