@@ -14,7 +14,7 @@ test.before(t=>{
             .reply(200, {response : "response"});
 });
 
-test("Collections", t => {
+test("Collections: When collections end point is called, the correct path is built", t => {
     var client = new Api({apiKey: "apikey", apiSecret: "apisecret"}, null);
     return Promise.resolve(client.collections().execute()).then(res => {
         t.is(res.response, "response");
