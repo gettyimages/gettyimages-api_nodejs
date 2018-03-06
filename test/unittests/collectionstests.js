@@ -11,22 +11,12 @@ test.before(t=>{
                 expires_in: "1800"
             })
             .get("/v3/collections")
-            .reply(200);
+            .reply(200, {response : "response"});
 });
 
 test("Collections", t => {
-    debugger;
-    var client = new Api({apiKey: "qkc3ccsppa8bx4fqpaw7duzz", apiSecret: "UndzXjVQZTctNxuJKhbc3AudTx7SMXvbF4d44nTTPdD4k"});
-    return Promise.resolve(client.collections().execute())
-    .then(text => {
-        console.log(JSON.stringify(text.images[0]));
-        t.true(JSON.stringify(text.images[0]), "xx")
-    })
-
+    var client = new Api({apiKey: "apikey", apiSecret: "apisecret"}, null);
+    return Promise.resolve(client.collections().execute()).then(res => {
+        t.is(res.response, "response");
+    });
 })
-
-// test.cb("Collections: When collections end point is called, the correct path is built", t => {  
-//     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-//      t.end(client.collections().execute((err, response) => {
-//     }));
-// });

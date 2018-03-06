@@ -11,11 +11,13 @@ test.before(t=>{
                 expires_in: "1800"
             })
             .get("/v3/countries")
-            .reply(200);
+            .reply(200, {response : "response"});
 });
 
-test.cb("Countries: When countries end point is called, the correct path is built", t => {  
+test("Countries: When countries end point is called, the correct path is built", t => {  
     var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-     t.end(client.countries().execute((err, response) => {
-    }));
+    return Promise.resolve(client.countries().execute()).then(res => {
+        t.is(res.response, "response");
+    });
 });
+
