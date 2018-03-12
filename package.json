@@ -33,6 +33,6 @@
     "url": "git://github.com/gettyimages/gettyimages-api_nodejs.git"
   },
   "scripts": {
-    "unittest": "./node_modules/.bin/ava --verbose test/unittests"
+    "test": "./node_modules/.bin/ava --verbose test/unittests"
   }
 }
