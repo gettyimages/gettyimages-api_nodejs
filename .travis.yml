@@ -1,22 +1,15 @@
 language: node_js
 node_js:
 - 8
-- 9
 sudo: false
 script:
-  - npm install
-  - npm test
-addons:
-  code_climate:
-      repo_token: 
-        secure: "YnYdlHuU76mB1M4xVGhwqs/BAKm5gFXV/ozOCHSW14Z3x/xslKcz/rs1hPe9flhNAmtLP7yB1cmCUWmGOlF3epXOZrSlhaPSXq4/LP4NpvYJRl1uT1hy7laVViItSuTF9MTMYNhodkRx59DQjTqSGqzHpjndfQuyF5d9cIDgCeA="
+- npm install
+- "./node_modules/.bin/eslint ./lib"
+- npm test
 notifications:
-  slack: 
-    rooms:
-    - secure: "VZLnmbqpWcIYjmtxdZePaqPr0RGfSnbBT902TyMLuVar/wccXgQXsgfNr5CbbPfob8QuiryllR1k84QpbmluWLsTTUbK01L6jw51GNSQ7CL6htsGszHcaHRabjlT1/HCfzZV9adIFsmxGp+sQAp+Pb8lKgGInC6oAAJFk7t6UH8="
-  webhooks:
-    urls:
-        - secure: "Nvz33hP3Wi0GHOgVeXkdhT4uTHlnLJfu3u6MCoWWgBTxgt8hLTl1UX3mfAvmlpowaumcxUX0wTDv4XCuKi6ktc6VSEz9K7OK+aVT+qMDF/hThEvxFawJLmtSdYPFH2rbNzG8AWTqc8OmJ5MqttYb9dWoZdtGorIW7Veof23wZfo="
+  slack:
     on_success: always
     on_failure: always
     on_start: never
+    rooms:
+      secure: tEC0voqIsLZ7saaJlbS1vinS6CeoPivHsMcqmAcibM3bwhPWD4ueQdEqKf93BG3R0DeFDU7NoCb2nN8Oyrtq89N9zVEpD4tzAQChQymUUfxF3/WTXzX6Ifubm8fi7HgJHROWC04aFSTf1HUFyh1GWxgtQ8j6DsV+E5vEn3pqHRmaNRl0UXJta49qU2OXJVdBzIYOhMhZMJaVZPGhbBIfKzhTjz6h8nxg/qbpm3TNbHXZmjBtMJs7Ru84u2/BEAdz7/we4PExi2woSPWHmdHWEuvvSk1ZMEP47unI1UvZ69bjBsAV7H8OhbTygfILnjkiJbawVGAgZ1+n2ztc6SI5PbgB50hKCgW6qwH+7fkDsXetEwEe6NACOozuG2SbRUHNhKcDdpy4JrdA17Z2FikmET1hzcve5ZCw+bV1sCISpXTYNkWLqQGkm/5VdFlvdgB2uPXq9h9gnY1gRjI5MLZ1GzF0WwTDqKPBKhhZFho7oyBZS6pdOOp0+yN/Pu3qKUl97sWBw/usJTpO6jNWQPqV5ItQOjlUc6/5T9TJjtXdaI+H0kNbHQTlyaha1uywt/3JG8OZLx1e4wLPz+CFpR0eWghRlQcZBU9YsyFUrPN8hxKcUTGHCBseSNXTkl9m08toQJKRmIJ0QOXjLR5MFIkMoO+O7eyuE7FKYcl0tt/YFbQ=
