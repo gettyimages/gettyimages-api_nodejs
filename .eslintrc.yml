@@ -1,13 +1,9 @@
-ecmaFeatures:
-  modules: true
-  jsx: true
-
 env:
-  amd: true
-  browser: true
-  es6: true
-  jquery: true
   node: true
+
+parserOptions:
+  sourceType: module
+  ecmaVersion: 8
 
 # http://eslint.org/docs/rules/
 rules:
@@ -44,7 +40,7 @@ rules:
   # Best Practices
   accessor-pairs: error
   block-scoped-var: off
-  complexity: [2, 6]
+  complexity: ["warn"]
   consistent-return: off
   curly: off
   default-case: off
@@ -148,7 +144,7 @@ rules:
   max-len: off
   max-nested-callbacks: off
   max-params: off
-  max-statements: [2, 30]
+  # max-statements: [2, 30]
   new-cap: off
   new-parens: off
   newline-after-var: off

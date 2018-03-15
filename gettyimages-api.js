@@ -1,13 +1,20 @@
 "use strict";
 var Credentials = require("./lib/credentials");
-var Downloads = require("./lib/downloads");
+var VideoDownloads = require("./lib/downloadsvideos");
+var ImageDownloads = require("./lib/downloadsimages");
 var Images = require("./lib/images");
 var SdkException = require("./lib/sdkexception");
-var Search = require("./lib/search");
+var SearchImages = require("./lib/searchimages");
+var SearchImagesCreative = require("./lib/searchimagescreative");
+var SearchImagesEditorial = require("./lib/searchimageseditorial");
 var Collections = require("./lib/collections");
 var Countries = require("./lib/countries");
 var Events = require("./lib/events");
 var Videos = require("./lib/videos");
+var SearchVideos = require("./lib/searchvideos");
+var SearchVideosCreative = require("./lib/searchvideoscreative");
+var SearchVideosEditorial = require("./lib/searchvideoseditorial");
+var CustomRequest = require("./lib/customrequest");
 
 const _hostName = new WeakMap();
 const _credentialOptions = new WeakMap();
@@ -50,28 +57,16 @@ class GettyImagesApi {
 
         this.hostName = hostName;
         this.credentials = credentials;
-        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refreshToken, hostName);
+        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refresh_token, hostName);
     }
 
-    getAccessToken(next) {
+    getAccessToken() {
         var creds = this.creds;
         
-        if (creds.RefreshToken) {
-            creds.refreshAccessToken(function (err, accessToken) {
-                if (err) {
-                    return next(err, null);
-                } else {
-                    return next(null, accessToken);
-                }
-            });
+        if (creds.refreshToken) {
+            return creds.refreshAccessToken();
         } else {
-            creds.getAccessToken(function (err, accessToken) {
-                if (err) {
-                    return next(err, null);
-                } else {
-                    return next(null, accessToken);
-                }
-            });
+            return creds.getAccessToken();
         }
     }
 
@@ -83,8 +78,28 @@ class GettyImagesApi {
         return new Videos(this.creds, this.hostName);
     }
 
-    search() {
-        return new Search(this.creds, this.hostName);
+    searchvideos() {
+        return new SearchVideos(this.creds, this.hostName);
+    }
+
+    searchvideoscreative() {
+        return new SearchVideosCreative(this.creds, this.hostName);
+    }
+
+    searchvideoseditorial() {
+        return new SearchVideosEditorial(this.creds, this.hostName);
+    }
+
+    searchimages() {
+        return new SearchImages(this.creds, this.hostName);
+    }
+
+    searchimagescreative() {
+        return new SearchImagesCreative(this.creds, this.hostName);
+    }
+
+    searchimageseditorial() {
+        return new SearchImagesEditorial(this.creds, this.hostName);
     }
 
     collections() {
@@ -99,8 +114,16 @@ class GettyImagesApi {
         return new Events(this.creds, this.hostName);
     }
 
-    downloads() {
-        return new Downloads(this.creds, this.hostName);
+    downloadsvideos() {
+        return new VideoDownloads(this.creds, this.hostName);
+    }
+
+    downloadsimages() {
+        return new ImageDownloads(this.creds, this.hostName);
+    }
+
+    customrequest() {
+        return new CustomRequest(this.creds, this.hostName);
     }
 }
 

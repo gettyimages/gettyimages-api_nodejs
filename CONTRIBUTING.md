@@ -17,12 +17,11 @@ as we don't commit to master with failing tests, but hey, you never
 know!
 
 ```sh
-npm test
 npm run unittest
 ```
 This will also show you where we're at with code coverage.
 
-The tests are mostly written with [CucumberJS](https://github.com/cucumber/cucumber-js), but we are in the middle of converting to [Ava](https://github.com/avajs/ava). 
+The tests are written with [Ava](https://github.com/avajs/ava). 
 
 Ideally, if you add completely new functionality, you would write your tests first.
 
@@ -40,7 +39,7 @@ and the automated build fails.
 
 
 ```sh
-npm test
+npm run unittest
 npm run lint
 ```
 
