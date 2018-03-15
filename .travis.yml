@@ -4,6 +4,7 @@ node_js:
 sudo: false
 script:
 - npm install
+- npm version $TRAVIS_TAG
 - "./node_modules/.bin/eslint ./lib"
 - npm test
 notifications:
@@ -13,3 +14,11 @@ notifications:
     on_start: never
     rooms:
       secure: tEC0voqIsLZ7saaJlbS1vinS6CeoPivHsMcqmAcibM3bwhPWD4ueQdEqKf93BG3R0DeFDU7NoCb2nN8Oyrtq89N9zVEpD4tzAQChQymUUfxF3/WTXzX6Ifubm8fi7HgJHROWC04aFSTf1HUFyh1GWxgtQ8j6DsV+E5vEn3pqHRmaNRl0UXJta49qU2OXJVdBzIYOhMhZMJaVZPGhbBIfKzhTjz6h8nxg/qbpm3TNbHXZmjBtMJs7Ru84u2/BEAdz7/we4PExi2woSPWHmdHWEuvvSk1ZMEP47unI1UvZ69bjBsAV7H8OhbTygfILnjkiJbawVGAgZ1+n2ztc6SI5PbgB50hKCgW6qwH+7fkDsXetEwEe6NACOozuG2SbRUHNhKcDdpy4JrdA17Z2FikmET1hzcve5ZCw+bV1sCISpXTYNkWLqQGkm/5VdFlvdgB2uPXq9h9gnY1gRjI5MLZ1GzF0WwTDqKPBKhhZFho7oyBZS6pdOOp0+yN/Pu3qKUl97sWBw/usJTpO6jNWQPqV5ItQOjlUc6/5T9TJjtXdaI+H0kNbHQTlyaha1uywt/3JG8OZLx1e4wLPz+CFpR0eWghRlQcZBU9YsyFUrPN8hxKcUTGHCBseSNXTkl9m08toQJKRmIJ0QOXjLR5MFIkMoO+O7eyuE7FKYcl0tt/YFbQ=
+deploy:
+  provider: npm
+  email: mark.pitman@gettyimages.com
+  api_key:
+    secure: sTBlgbRiRnmg+1dTCeK1t6BhoCN4HvnqP4t04i4W2Qm96OETJ2tlS8wB0vCGES9ointzuOP7oLtlXSHZJmRv9fX2IvfLq/kYMkuVZ+cowuK2m6CQBy3ezaP7069L7MPDxvWNRlOIuuE+6ez7keNW1iDB6xtepGCueBdp2Cpjzh9HA1TF8XZ554NXIXJ8QTMytz7HS5XWXvGMCdRAthoRxQ958hzbPnBiLR2NuKzPDF2G6EgsjrfHpAwvb+l6cTiJ9fY5m690f1LlOMgPC0ARwsjDNKUJt3phVM3nHb8JE88oclPvTAfkCBENHv9UAqV+CDWEodk/os305afS/9Ito9Ih1fWXpNJDpqTuts6FfVc3xBpG5QAwawrINGf4x7xroA9DTKU209vFGHcuc0BcscbPwrWdLDVoJHNB2BCGLY+gdvHcgL/xJ/gEaoYQJnJvZTqre60HBVpi7iZR29qF4BGMJwvYwJyav3+EWc00RgMWKSMfRnR8GumpDPtzYxWaNMPCgu9DD/Bu0VpFdzPNBttlogdCzIkBQ1kY7odUNoQhML8D4kLiGWEmqhF9dD5Ho1aI8C2+wtTNm6ieOoi7773ObtcTZBn66UpRX33dbtDoqHSr3VKgE0cmIdq0CXBmSH6vQcpKiWC0MMqgLjqKg0PplfZSOJAHxhcG0AYZ6LY=
+  on:
+    tags: true
+    repo: gettyimages/gettyimages-api_nodejs
