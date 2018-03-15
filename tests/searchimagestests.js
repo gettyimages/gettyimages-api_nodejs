@@ -1,4 +1,4 @@
-import Api from "../../gettyimages-api";
+import api from "../gettyimages-api";
 import nock from "nock";
 import test from "ava";
 
@@ -88,175 +88,175 @@ test.beforeEach(t=>{
 });
 
 test("SearchImages: withPhrase will include phrase in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withAgeOfPeople will include age_of_people in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withAgeOfPeople(["adult", "newborn", "0-1_months"]).withAgeOfPeople(["12-17_months", "mature_adult"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withArtist will include artists in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withArtist(["roman makhmutov", "Linda Raymond"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withCollectionCode will include codes in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withCollectionCode(["WRI", "ARF"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withCollectionsFilterType will include collections_filter_type in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withCollectionsFilterType("exclude").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withColor will include color in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withColor("#002244").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withCompostition will include compostition in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withComposition(["abstract", "headshot"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withEmbedContentOnly will include embed_content_only in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withEmbedContentOnly().execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withEthnicity will include ethnicity in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withEthnicity(["black", "japanese"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withEventId will include event_ids in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withEventId([1234, 5678]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withExcludeNudity will include exclude_nudity in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withExcludeNudity().execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withResponseField will include fields in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withResponseField(["asset_family", "id"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withFileType will include file_types in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withFileType(["eps", "jpg"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withGraphicalStyle will include graphical_styles in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withGraphicalStyle(["fine_art", "illustration"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withKeywordId will include keyword_ids in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withKeywordId([1234, 5678]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withLicenseModel will include license_models in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withLicenseModel(["rightsmanaged", "royaltyfree"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withMinimumSize will include minimum_size in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withMinimumSize("small").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withNumberOfPeople will include number_of_people in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withNumberOfPeople(["one", "group"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withOrientation will include orientations in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withOrientation(["horizontal", "square"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withPage will include page in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withPage(3).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withPageSize will include page_size in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withPageSize(50).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withPrestigeContentOnly will include prestige_content_only in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withPrestigeContentOnly().execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withProductType will include product_types in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withSortOrder will include sort_order in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withSortOrder("newest").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchImages: withSpecificPeople will include specific_people in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withSpecificPeople("reggie jackson").execute()).then(res => {
         t.is(res.response, "response");
     });

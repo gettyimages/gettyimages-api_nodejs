@@ -1,4 +1,4 @@
-import Api from "../../gettyimages-api";
+import api from "../gettyimages-api";
 import nock from "nock";
 import test from "ava";
 
@@ -21,21 +21,21 @@ test.beforeEach(t=>{
 });
 
 test("Videos: When given a single id, the id will be part of the path", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.videos().withIds("123").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("Videos: When given an array of ids, the ids will be part of the query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.videos().withIds(["456", "789"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("Videos: When given an array of fields, the fields will be part of the query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.videos().withId("101112").withResponseField(["id", "artist"]).execute()).then(res => {
         t.is(res.response, "response");
     });

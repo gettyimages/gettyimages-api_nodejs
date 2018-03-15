@@ -1,4 +1,4 @@
-import Api from "../../gettyimages-api";
+import api from "../gettyimages-api";
 import nock from "nock";
 import test from "ava";
 
@@ -10,14 +10,13 @@ test.before(t=>{
                 token_type: "Bearer",
                 expires_in: "1800"
             })
-            .get("/v3/countries")
+            .get("/v3/collections")
             .reply(200, {response : "response"});
 });
 
-test("Countries: When countries end point is called, the correct path is built", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-    return Promise.resolve(client.countries().execute()).then(res => {
+test("Collections: When collections end point is called, the correct path is built", t => {
+    var client = new api({apiKey: "apikey", apiSecret: "apisecret"}, null);
+    return Promise.resolve(client.collections().execute()).then(res => {
         t.is(res.response, "response");
     });
-});
-
+})

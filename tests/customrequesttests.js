@@ -1,4 +1,4 @@
-import Api from "../../gettyimages-api";
+import api from "../gettyimages-api";
 import nock from "nock";
 import test from "ava";
 
@@ -23,14 +23,14 @@ test.beforeEach(t=>{
 });
 
 test("CustomRequest: A get method will create the appropriate request", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.customrequest().withRoute("search/images").withMethod("get").withQueryParameters({"phrase": "cat", "file_types": "eps"}).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("CustomRequest: A post method will create the appropriate request", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.customrequest().withRoute("downloads/images/123").withMethod("post").withQueryParameters({"file_type": "jpg", "auto_download": "false"}).execute()).then(res => {
         t.is(res.response, "response");
     });
@@ -38,14 +38,14 @@ test("CustomRequest: A post method will create the appropriate request", t => {
 });
 
 test("CustomRequest: A delete method will create the appropriate request", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.customrequest().withRoute("boards/123").withMethod("delete").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("CustomRequest: A put method will create the appropriate request", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.customrequest().withRoute("boards/123").withMethod("put").withBody({"name": "this board", "description": "some description"}).execute()).then(res => {
         t.is(res.response, "response");
     });

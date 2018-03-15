@@ -1,13 +1,14 @@
 {
 	"version": "0.2.0",
 	"configurations": [
-
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Current Ava Test",
+			"name": "Run current test",
 			"program": "${workspaceRoot}/node_modules/ava/profile.js",
-			"args": ["${file}"],
+			"args": [
+				"${file}"
+			],
 			"sourceMaps": false
 		},
 		{
@@ -15,18 +16,6 @@
 			"type": "node",
 			"request": "attach",
 			"port": 5858
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Run AVA test",
-			"program": "${workspaceRoot}/node_modules/ava/profile.js",
-			"args": [
-			  "${file}"
-			],
-			"skipFiles": [
-				"<node_internals>/**/*.js"
-			]
 		}
 	]
 }

@@ -13,3 +13,4 @@ test
 jsconfig.json
 .codeclimate.yml
 .eslintignore
+npm-debug.log

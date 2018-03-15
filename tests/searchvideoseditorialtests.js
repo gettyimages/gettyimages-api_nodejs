@@ -1,4 +1,4 @@
-import Api from "../../gettyimages-api";
+import api from "../gettyimages-api";
 import nock from "nock";
 import test from "ava";
 
@@ -61,112 +61,112 @@ test.beforeEach(t=>{
 });
 
 test("SearchVideosEditorial: withPhrase will include phrase in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withAgeOfPeople will include age_of_people in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withAgeOfPeople(["adult", "newborn", "0-1_months"]).withAgeOfPeople(["12-17_months", "mature_adult"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withCollectionCode will include codes in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withCollectionCode(["WRI", "ARF"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withCollectionsFilterType will include collections_filter_type in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withCollectionsFilterType("exclude").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withEditorialVideoType will include editorial_video_type in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withEditorialVideoType("raw").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withEntityUris will include entity_uris in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withEntityUris(["123", "456"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withExcludeNudity will include exclude_nudity in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withExcludeNudity().execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withResponseField will include fields in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withResponseField(["asset_family", "id"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withFormatAvailable will include format_available in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withFormatAvailable("hd").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withFrameRate will include frame_rates in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withFrameRate(["24", "29.97"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withKeywordId will include keyword_ids in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withKeywordId([1234, 5678]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withPage will include page in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withPage(3).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withPageSize will include page_size in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withPageSize(50).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withProductType will include product_types in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withSortOrder will include sort_order in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withSortOrder("newest").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
 
 test("SearchVideosEditorial: withSpecificPeople will include specific_people in query", t => {  
-    var client = new Api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoseditorial().withPhrase("cat").withSpecificPeople("reggie jackson").execute()).then(res => {
         t.is(res.response, "response");
     });
