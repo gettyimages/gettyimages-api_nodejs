@@ -6,6 +6,8 @@ script:
 - npm install
 - "./node_modules/.bin/eslint ./lib"
 - npm test
+- ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls
+
 notifications:
   slack:
     on_success: always
