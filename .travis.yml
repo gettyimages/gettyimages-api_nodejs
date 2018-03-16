@@ -4,7 +4,6 @@ node_js:
 sudo: false
 script:
 - npm install
-- npm version $TRAVIS_TAG
 - "./node_modules/.bin/eslint ./lib"
 - npm test
 notifications:
