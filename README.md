@@ -1,5 +1,10 @@
 # Getty Images API Node.js SDK
-[![Build Status](https://travis-ci.org/gettyimages/gettyimages-api_nodejs.svg?branch=master)](https://travis-ci.org/gettyimages/gettyimages-api_nodejs)  
+[![npm version](https://badge.fury.io/js/gettyimages-api.svg)](https://badge.fury.io/js/gettyimages-api)
+[![Downloads](https://img.shields.io/npm/dt/gettyimages-api.svg)](http://npm-stat.com/charts.html?package=gettyimages-api)
+[![](https://travis-ci.org/gettyimages/gettyimages-api_nodejs.svg?branch=master)](https://travis-ci.org/gettyimages/gettyimages-api_nodejs)
+[![Coverage Status](https://coveralls.io/repos/github/gettyimages/gettyimages-api_nodejs/badge.svg)](https://coveralls.io/github/gettyimages/gettyimages-api_nodejs)
+[![Code Climate](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs/badges/gpa.svg)](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs)
+
 ## Prerequesites
 * [Getty Images API account](https://api.gettyimages.com/member/register)
 * [Node.js](http://nodejs.org)
@@ -67,7 +72,13 @@ var api = require("gettyimages-api");
 var https = require("https");
 var fs = require("fs");
 
-var creds = { apiKey: process.env.GettyImagesApi_ApiKey, apiSecret: process.env.GettyImagesApi_ApiSecret, username: process.env.GettyImagesApi_UserName, password: process.env.GettyImagesApi_UserPassword };
+var creds = 
+    { 
+        apiKey: "your api key",
+        apiSecret: "your api secret",
+        username: "username",
+        password: "password"
+    };
 var client = new api(creds);
 var videoId = "459425248";
 client.videos().withResponseField(["summary_set", "downloads"]).withId(videoId).execute().then(response => {
