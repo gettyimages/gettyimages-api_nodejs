@@ -6,8 +6,21 @@
 [![Code Climate](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs/badges/gpa.svg)](https://codeclimate.com/github/gettyimages/gettyimages-api_nodejs)
 [![Open Hub](https://img.shields.io/badge/Open-Hub-0185CA.svg)](https://www.openhub.net/p/gettyimages-api_nodejs)
 
+## Introduction
+This SDK makes using the Getty Images [API](http://developers.gettyimages.com) easy. It handles credential management, makes HTTP requests and is written with a fluent style in mind. For more info about the API, see the [Documentation](https://developers.gettyimages.com/api/).
+
+* Search for images and videos from our extensive creative and editorial catalogs.
+* Get image, video, and event metadata.
+* Download files using your Getty Images products (e.g., Editorial subscriptions, Easy Access, Thinkstock Subscriptions, and Image Packs).
+* Custom Request functionality that allows user to call any endpoint.
+
+## Help & Support
+
+* [Getty Images API](http://developers.gettyimages.com/)
+* [Contact Developer Support](mailto:developersupport@gettyimages.com)
+* [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
+
 ## Prerequesites
-* [Getty Images API account](https://api.gettyimages.com/member/register)
 * [Node.js](http://nodejs.org)
 * [NPM](http://npmjs.org)
 
@@ -17,9 +30,6 @@ The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimag
 ```sh
 $ npm install --save gettyimages-api
 ```
-
-## Sample App
-There is a very simple sample app that uses the npm package [here](https://github.com/gettyimages/gettyimages-api_nodejs_sample).
 
 ## Examples
 ### Search for one or more images
@@ -137,9 +147,5 @@ client.customrequest().withRoute("search/images").withMethod("get").withQueryPar
     });
     
 ```
-## Help & Support
 
-* [Getty Images API](http://developers.gettyimages.com/)
-* [Contact Developer Support](mailto:developersupport@gettyimages.com)
-* [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
-* [Discuss on Gitter](https://gitter.im/gettyimages/gettyimages-api_nodejs)
+
