@@ -84,7 +84,12 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/images")
             .query({ "specific_people": "reggie jackson", "phrase": "cat" })
-            .reply(200, {response : "response"});
+            .reply(200, {response : "response"})
+            .get("/v3/search/images")
+            .query({"phrase":"monkey"})
+            .reply(200,function(path, reqBody, cb) {
+                cb(null,[200, {response: "response", headers: this.req.headers}]);
+             });
 });
 
 test("SearchImages: withPhrase will include phrase in query", t => {  
@@ -260,4 +265,12 @@ test("SearchImages: withSpecificPeople will include specific_people in query", t
     return Promise.resolve(client.searchimages().withPhrase("cat").withSpecificPeople("reggie jackson").execute()).then(res => {
         t.is(res.response, "response");
     });
+});
+
+test ("SearchImages: withAcceptLanguage will include the Accept-Languaged header in request", t=> {
+    var client = new api({apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimages().withAcceptLanguage("en-us").withPhrase("monkey").execute().then(res => {
+        t.is(res.headers["accept-language"],"en-us");
+        t.is(res.response,"response");
+    }));
 });
