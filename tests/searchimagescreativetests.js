@@ -78,7 +78,12 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "sort_order": "newest", "phrase": "cat" })
-            .reply(200, {response : "response"});
+            .reply(200, {response : "response"})
+            .get("/v3/search/images/creative")
+            .query({"phrase":"monkey"})
+            .reply(200,function(path, reqBody, cb) {
+                cb(null,[200, {response: "response", headers: this.req.headers}]);
+             });
 });
 
 test("SearchImagesCreative: withPhrase will include phrase in query", t => {  
@@ -242,3 +247,10 @@ test("SearchImagesCreative: withSortOrder will include sort_order in query", t =
     });
 });
 
+test ("SearchImagesCreative: withAcceptLanguage will include the Accept-Languaged header in request", t=> {
+    var client = new api({apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimagescreative().withAcceptLanguage("en-us").withPhrase("monkey").execute().then(res => {
+        t.is(res.headers["accept-language"],"en-us");
+        t.is(res.response,"response");
+    }));
+});
