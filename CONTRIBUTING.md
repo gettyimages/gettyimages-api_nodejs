@@ -17,7 +17,7 @@ as we don't commit to master with failing tests, but hey, you never
 know!
 
 ```sh
-npm test
+npm run test
 ```
 This will also show you where we're at with code coverage.
 
@@ -39,7 +39,7 @@ and the automated build fails.
 
 
 ```sh
-npm test
+npm run test
 npm run lint
 ```
 
