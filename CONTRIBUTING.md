@@ -39,7 +39,7 @@ and the automated build fails.
 
 
 ```sh
-npm run unittest
+npm test
 npm run lint
 ```
 
