@@ -17,7 +17,7 @@ as we don't commit to master with failing tests, but hey, you never
 know!
 
 ```sh
-npm run unittest
+npm test
 ```
 This will also show you where we're at with code coverage.
 
