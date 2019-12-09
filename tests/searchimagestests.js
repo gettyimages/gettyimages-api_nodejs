@@ -56,9 +56,6 @@ test.beforeEach(t=>{
             .query({ "keyword_ids": [1234, 5678].join(","), "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images")
-            .query({ "license_models": ["rightsmanaged", "royaltyfree"].join(","), "phrase": "cat" })
-            .reply(200, {response : "response"})
-            .get("/v3/search/images")
             .query({ "minimum_size": "small", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images")
@@ -193,13 +190,6 @@ test("SearchImages: withGraphicalStyle will include graphical_styles in query", 
 test("SearchImages: withKeywordId will include keyword_ids in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimages().withPhrase("cat").withKeywordId([1234, 5678]).execute()).then(res => {
-        t.is(res.response, "response");
-    });
-});
-
-test("SearchImages: withLicenseModel will include license_models in query", t => {  
-    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-    return Promise.resolve(client.searchimages().withPhrase("cat").withLicenseModel(["rightsmanaged", "royaltyfree"]).execute()).then(res => {
         t.is(res.response, "response");
     });
 });
