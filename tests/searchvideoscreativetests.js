@@ -52,6 +52,11 @@ test.beforeEach(t=>{
             .get("/v3/search/videos/creative")
             .query({ "sort_order": "newest", "phrase": "cat" })
             .reply(200, {response : "response"})
+            .get("/v3/search/videos/creative")
+            .query({"phrase":"monkey"})
+            .reply(200,function(path, reqBody, cb) {
+                cb(null,[200, {response: "response", headers: this.req.headers}]);
+             });
 });
 
 test("SearchVideosCreative: withPhrase will include phrase in query", t => {  
@@ -152,3 +157,11 @@ test("SearchVideosCreative: withSortOrder will include sort_order in query", t =
     });
 });
 
+
+test ("SearchVideosCreative: withAcceptLanguage will include the Accept-Languaged header in request", t=> {
+    var client = new api({apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchvideoscreative().withAcceptLanguage("en-us").withPhrase("monkey").execute().then(res => {
+        t.is(res.headers["accept-language"],"en-us");
+        t.is(res.response,"response");
+    }));
+});
