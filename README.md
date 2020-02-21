@@ -21,8 +21,8 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 * [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
 
 ## Prerequesites
-* [Node.js](http://nodejs.org)
-* [NPM](http://npmjs.org)
+* [Node.js (>= 10.19.0)](http://nodejs.org)
+* [NPM (>= 6.13.4)](http://npmjs.org)
 
 ## Getting Started
 The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimages-api). Install in your workspace with:
