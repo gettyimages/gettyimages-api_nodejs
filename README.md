@@ -1,4 +1,5 @@
 # Getty Images API Node.js SDK
+
 [![npm version](https://badge.fury.io/js/gettyimages-api.svg)](https://badge.fury.io/js/gettyimages-api)
 [![Downloads](https://img.shields.io/npm/dt/gettyimages-api.svg)](http://npm-stat.com/charts.html?package=gettyimages-api)
 [![](https://travis-ci.org/gettyimages/gettyimages-api_nodejs.svg?branch=master)](https://travis-ci.org/gettyimages/gettyimages-api_nodejs)
@@ -7,6 +8,7 @@
 [![Open Hub](https://img.shields.io/badge/Open-Hub-0185CA.svg)](https://www.openhub.net/p/gettyimages-api_nodejs)
 
 ## Introduction
+
 This SDK makes using the Getty Images [API](http://developers.gettyimages.com) easy. It handles credential management, makes HTTP requests and is written with a fluent style in mind. For more info about the API, see the [Documentation](https://developers.gettyimages.com/api/).
 
 * Search for images and videos from our extensive creative and editorial catalogs.
@@ -21,17 +23,20 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 * [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
 
 ## Prerequesites
+
 * [Node.js (>= 10.19.0)](http://nodejs.org)
 * [NPM (>= 6.13.4)](http://npmjs.org)
 
 ## Getting Started
+
 The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimages-api). Install in your workspace with:
 
 ```sh
-$ npm install --save gettyimages-api
+npm install --save gettyimages-api
 ```
 
 ## Examples
+
 ### Search for one or more images
 
 ```javascript
@@ -46,6 +51,7 @@ client.searchimages().withPage(1).withPageSize(1).withPhrase('beach')
     });
 
 ```
+
 ### Get detailed information for one or more images
 
 ```javascript
@@ -60,6 +66,7 @@ client.images().withId('200261415-001')
     });
 
 ```
+
 ### Download an image
 
 ```javascript
@@ -74,6 +81,7 @@ client.downloadsimages().withId('503928206')
     });
 
 ```
+
 ### Get details and download a video
 
 ```javascript
@@ -83,8 +91,8 @@ var api = require("gettyimages-api");
 var https = require("https");
 var fs = require("fs");
 
-var creds = 
-    { 
+var creds =
+    {
         apiKey: "your api key",
         apiSecret: "your api secret",
         username: "username",
@@ -122,7 +130,9 @@ client.videos().withResponseField(["summary_set", "downloads"]).withId(videoId).
     });
 
 ```
+
 ### Get an access token for use with the Getty Images Connect API
+
 ```javascript
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
@@ -132,9 +142,10 @@ client.getAccessToken().then(response => {
     }, err => {
         throw err;
     });
-    
 ```
+
 ### Use the custom request functionality
+
 ```javascript
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
@@ -145,7 +156,4 @@ client.customrequest().withRoute("search/images").withMethod("get").withQueryPar
     }, err => {
         throw err;
     });
-    
 ```
-
-
