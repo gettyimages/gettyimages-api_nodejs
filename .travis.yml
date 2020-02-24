@@ -1,6 +1,14 @@
 language: node_js
 node_js:
 - 10.19.0
+- 12.16.1
+- lts/* # current LTS version
+- node # current stable - we *should* work with this, but allowed to fail
+
+matrix:
+  allow_failures: # https://docs.travis-ci.com/user/build-matrix/#rows-that-are-allowed-to-fail
+    - node_js: node # allow current stable to fail
+
 sudo: false
 script:
 - npm install
