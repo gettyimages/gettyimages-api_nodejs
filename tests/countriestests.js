@@ -1,6 +1,6 @@
-import api from "../gettyimages-api";
-import nock from "nock";
-import test from "ava";
+const api = require("../gettyimages-api");
+const nock = require("nock");
+const test = require("ava");
 
 test.before(t=>{
     nock("https://api.gettyimages.com")

@@ -1,6 +1,6 @@
-import api from "../gettyimages-api";
-import nock from "nock";
-import test from "ava";
+const api = require("../gettyimages-api");
+const nock = require("nock");
+const test = require("ava");
 
 test.beforeEach(t=>{
     nock("https://api.gettyimages.com")
@@ -240,7 +240,10 @@ test("SearchImagesCreative: withSortOrder will include sort_order in query", t =
 test ("SearchImagesCreative: withAcceptLanguage will include the Accept-Languaged header in request", t=> {
     var client = new api({apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withAcceptLanguage("en-us").withPhrase("monkey").execute().then(res => {
-        t.is(res.headers["accept-language"],"en-us");
-        t.is(res.response,"response");
+        var code = res[0];
+        var body = res[1];
+        t.is(code, 200);
+        t.is(body.headers["accept-language"],"en-us");
+        t.is(body.response,"response");
     }));
 });
