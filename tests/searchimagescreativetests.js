@@ -63,10 +63,10 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "page": 3, "phrase": "cat" })
-            .reply(200, {response : "response"})
+            .reply(200, {response : "page3"})
             .get("/v3/search/images/creative")
             .query({ "page_size": 50, "phrase": "cat" })
-            .reply(200, {response : "response"})
+            .reply(200, {response : "pageSize50"})
             .get("/v3/search/images/creative")
             .query({ "prestige_content_only": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
@@ -205,14 +205,14 @@ test("SearchImagesCreative: withOrientation will include orientations in query",
 test("SearchImagesCreative: withPage will include page in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withPage(3).execute()).then(res => {
-        t.is(res.response, "response");
+        t.is(res.response, "page3");
     });
 });
 
 test("SearchImagesCreative: withPageSize will include page_size in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withPageSize(50).execute()).then(res => {
-        t.is(res.response, "response");
+        t.is(res.response, "pageSize50");
     });
 });
 
