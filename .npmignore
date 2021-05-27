@@ -14,3 +14,9 @@ jsconfig.json
 .codeclimate.yml
 .eslintignore
 npm-debug.log
+.github
+Makefile
+.nyc_output
+tests
+.travis*
+*.tgz
