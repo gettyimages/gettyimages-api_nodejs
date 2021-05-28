@@ -39,17 +39,16 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-      with:
-        node-version: 14.x
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
     - uses: actions/download-artifact@v1
       with:
         name: package
         path: .
-    - name: 'Get Previous tag'
-      id: previoustag
-      uses: "WyriHaximus/github-action-get-previous-tag@v1"
-    - name: Publish Package to npmjs.com
-      run: npm publish ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - run: npm publish ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION_KEY}}
