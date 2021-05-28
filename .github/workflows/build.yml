@@ -19,13 +19,5 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - name: 'Get Previous tag'
-      id: previoustag
-      uses: "WyriHaximus/github-action-get-previous-tag@v1"
-    - name: Set version
-      run: |
-        sed -i -e "s/0.0.0/${{ steps.previoustag.outputs.tag }}/" package.json
-        cat package.json
     - run: npm ci
     - run: npm test
-    - run: npm pack
