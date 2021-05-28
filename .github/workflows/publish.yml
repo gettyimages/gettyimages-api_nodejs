@@ -28,6 +28,11 @@ jobs:
         cat package.json
     - run: npm ci
     - run: npm test
+    - run: npm pack
+    - uses: actions/upload-artifact@v1
+      with:
+        name: package
+        path: ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
   
   publish:
     runs-on: ubuntu-latest
@@ -39,5 +44,12 @@ jobs:
         node-version: 14.x
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION_KEY}}
+    - uses: actions/download-artifact@v1
+      with:
+        name: package
+        path: .
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
     - name: Publish Package to npmjs.com
-      run: npm publish --dry-run
+      run: npm publish ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz --dry-run
