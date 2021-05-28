@@ -42,8 +42,6 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: 14.x
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION_KEY}}
     - uses: actions/download-artifact@v1
       with:
         name: package
@@ -53,3 +51,5 @@ jobs:
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
     - name: Publish Package to npmjs.com
       run: npm publish ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION_KEY}}
