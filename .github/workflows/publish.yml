@@ -25,6 +25,7 @@ jobs:
     - name: Set version
       run: |
         sed -i -e "s/0.0.0/${{ steps.previoustag.outputs.tag }}/" package.json
+        sed -i -e "s/0.0.0/${{ steps.previoustag.outputs.tag }}/" package-lock.json
         cat package.json
     - run: npm ci
     - run: npm test
