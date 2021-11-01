@@ -6,7 +6,7 @@ declare module 'gettyimages-api' {
   export interface CustomRequest extends GettyApiRequest {
     execute(): Promise<any>
     withRoute(route: string): this
-    withMethod(method: string): this
+    withMethod(method: 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options'): this
     withBody(body: any): this
     withQueryParameters(params: { [key: string]: string }): this
   }
