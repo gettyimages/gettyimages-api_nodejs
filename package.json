@@ -41,5 +41,6 @@
   "scripts": {
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/ava --verbose ./tests/*.js"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "types": "gettyimages-api.d.ts"
 }
