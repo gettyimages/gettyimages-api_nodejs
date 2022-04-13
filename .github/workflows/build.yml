@@ -18,6 +18,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm test
+    - run: npm run coverage  
     - name: Coveralls
       uses: coverallsapp/github-action@v1.1.0
       env:
@@ -26,6 +27,7 @@ jobs:
         github-token: ${{ secrets.github_token }}
         parallel: true
         flag-name: ${{ matrix.node-version }}
+        path-to-lcov: ./lcov.info
   finish:
    needs: build
    runs-on: ubuntu-latest
