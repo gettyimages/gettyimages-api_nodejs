@@ -39,7 +39,8 @@
     "url": "git://github.com/gettyimages/gettyimages-api_nodejs.git"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/ava --verbose ./tests/*.js"
+    "test": "./node_modules/.bin/nyc ./node_modules/.bin/ava --verbose ./tests/*.js",
+    "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > lcov.info"
   },
   "dependencies": {}
 }
