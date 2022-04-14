@@ -2,7 +2,7 @@ const api = require("../gettyimages-api");
 const nock = require("nock");
 const test = require("ava");
 
-test.beforeEach( t => {
+test.beforeEach( () => {
     nock("https://api.gettyimages.com")
         .post("/oauth2/token", "client_id=apikey&client_secret=apisecret&grant_type=client_credentials")
         .reply(200, {
