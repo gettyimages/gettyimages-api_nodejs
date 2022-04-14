@@ -9,6 +9,8 @@ rules:
   indent:
     - error
     - 4
+    - SwitchCase: 1
+  
   linebreak-style:
     - error
     - unix
@@ -18,3 +20,6 @@ rules:
   semi:
     - error
     - always
+  arrow-spacing:
+    - error
+    
