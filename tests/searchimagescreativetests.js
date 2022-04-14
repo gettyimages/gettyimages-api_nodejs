@@ -38,6 +38,9 @@ test.beforeEach(t=>{
             .query({ "ethnicity": ["black", "japanese"].join(","), "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
+            .query({ "exclude_editorial_use_only": "true", "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/images/creative")
             .query({ "exclude_nudity": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
@@ -72,6 +75,9 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "product_types": ["easyaccess", "editorialsubscription"].join(","), "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/images/creative")
+            .query({ "safe_search": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "sort_order": "newest", "phrase": "cat" })
@@ -148,7 +154,7 @@ test("SearchImagesCreative: withEthnicity will include ethnicity in query", t =>
 
 test("SearchImagesCreative: withExcludeEditorialUseOnly will include exclude_editorial_use_only in query", t => {
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
-    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withExcludeEditorialUseOnly().execute()).then(res => {
+    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withExcludeEditorialUseOnly("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
