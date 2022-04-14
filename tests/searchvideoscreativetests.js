@@ -23,6 +23,9 @@ test.beforeEach(t=>{
             .query({ "collections_filter_type": "exclude", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/videos/creative")
+            .query({ "exclude_editorial_use_only": "true", "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/videos/creative")
             .query({ "exclude_nudity": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/videos/creative")
@@ -48,6 +51,9 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/videos/creative")
             .query({ "product_types": ["easyaccess", "editorialsubscription"].join(","), "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/videos/creative")
+            .query({ "safe_search": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/videos/creative")
             .query({ "sort_order": "newest", "phrase": "cat" })
@@ -83,6 +89,13 @@ test("SearchVideosCreative: withCollectionCode will include codes in query", t =
 test("SearchVideosCreative: withCollectionsFilterType will include collections_filter_type in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoscreative().withPhrase("cat").withCollectionsFilterType("exclude").execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
+test("SearchVideosCreative: withExcludeEditorialUseOnly will include exclude_editorial_use_only in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchvideoscreative().withPhrase("cat").withExcludeEditorialUseOnly("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
@@ -146,6 +159,13 @@ test("SearchVideosCreative: withPageSize will include page_size in query", t => 
 test("SearchVideosCreative: withProductType will include product_types in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchvideoscreative().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
+test("SearchVideosCreative: withSafeSearch will include safe_search in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchvideoscreative().withPhrase("cat").withSafeSearch("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });

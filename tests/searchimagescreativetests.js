@@ -38,6 +38,9 @@ test.beforeEach(t=>{
             .query({ "ethnicity": ["black", "japanese"].join(","), "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
+            .query({ "exclude_editorial_use_only": "true", "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/images/creative")
             .query({ "exclude_nudity": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
@@ -72,6 +75,9 @@ test.beforeEach(t=>{
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "product_types": ["easyaccess", "editorialsubscription"].join(","), "phrase": "cat" })
+            .reply(200, {response : "response"})
+            .get("/v3/search/images/creative")
+            .query({ "safe_search": "true", "phrase": "cat" })
             .reply(200, {response : "response"})
             .get("/v3/search/images/creative")
             .query({ "sort_order": "newest", "phrase": "cat" })
@@ -142,6 +148,13 @@ test("SearchImagesCreative: withEmbedContentOnly will include embed_content_only
 test("SearchImagesCreative: withEthnicity will include ethnicity in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withEthnicity(["black", "japanese"]).execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
+test("SearchImagesCreative: withExcludeEditorialUseOnly will include exclude_editorial_use_only in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withExcludeEditorialUseOnly("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
@@ -226,6 +239,13 @@ test("SearchImagesCreative: withPrestigeContentOnly will include prestige_conten
 test("SearchImagesCreative: withProductType will include product_types in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
+test("SearchImagesCreative: withSafeSearch will include safe_search in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withSafeSearch("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
