@@ -12,7 +12,7 @@
             },
             "problemMatcher": [],
             "label": "npm: test",
-            "detail": "./node_modules/.bin/nyc ./node_modules/.bin/ava --verbose ./tests/*.js"
+            "detail": "Run all tests"
         }
     ]
 }

@@ -47,7 +47,7 @@ npm install --save gettyimages-api
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
 var client = new api (creds);
-client.searchimages().withPage(1).withPageSize(1).withPhrase('beach')
+client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
     .execute().then(response => {
         console.log(JSON.stringify(response.images[0]));
     }, err => {
