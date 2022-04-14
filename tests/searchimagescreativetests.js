@@ -146,6 +146,13 @@ test("SearchImagesCreative: withEthnicity will include ethnicity in query", t =>
     });
 });
 
+test("SearchImagesCreative: withExcludeEditorialUseOnly will include exclude_editorial_use_only in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withExcludeEditorialUseOnly().execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
 test("SearchImagesCreative: withExcludeNudity will include exclude_nudity in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withExcludeNudity().execute()).then(res => {
@@ -226,6 +233,13 @@ test("SearchImagesCreative: withPrestigeContentOnly will include prestige_conten
 test("SearchImagesCreative: withProductType will include product_types in query", t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     return Promise.resolve(client.searchimagescreative().withPhrase("cat").withProductType(["easyaccess", "editorialsubscription"]).execute()).then(res => {
+        t.is(res.response, "response");
+    });
+});
+
+test("SearchImagesCreative: withSafeSearch will include safe_search in query", t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    return Promise.resolve(client.searchimagescreative().withPhrase("cat").withSafeSearch("true").execute()).then(res => {
         t.is(res.response, "response");
     });
 });
