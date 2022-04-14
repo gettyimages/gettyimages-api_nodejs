@@ -4,12 +4,17 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Run current test",
-			"program": "${workspaceRoot}/node_modules/ava/profile.js",
-			"args": [
+			"name": "Debug current test",
+			"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ava",
+			"runtimeArgs": [
+				"--timeout=5m",
 				"${file}"
 			],
-			"sourceMaps": false
+			"sourceMaps": false,
+			"outputCapture": "std",
+			"skipFiles": [
+				"<node_internals>/**/*.js"
+			]
 		},
 		{
 			"name": "Attach",
