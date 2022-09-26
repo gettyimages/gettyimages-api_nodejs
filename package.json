@@ -23,7 +23,7 @@
   },
   "main": "gettyimages-api.js",
   "devDependencies": {
-    "ava": "^3.3.0",
+    "ava": "^4.3.3",
     "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
