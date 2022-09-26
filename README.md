@@ -21,10 +21,13 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 * [Getty Images API](http://developers.gettyimages.com/)
 * [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
 
-## Prerequesites
+## Prerequisites
 
-* [Node.js (>= 10.19.0)](http://nodejs.org)
-* [NPM (>= 6.13.4)](http://npmjs.org)
+We will attempt to support all versions of NodeJS that are still supported.
+See the [NodeJS Release Page](https://github.com/nodejs/release) for info on this.
+
+* [Node.js (>= 14.20.1)](http://nodejs.org)
+* [NPM (>= 8.15.0)](http://npmjs.org)
 
 ## Getting Started
 
