@@ -161,4 +161,18 @@ client.customrequest().withRoute("search/images").withMethod("get").withQueryPar
         throw err;
     });
 ```
+### Add custom parameter and header to a search request
 
+```javascript
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
+    .withCustomParameter("safe_search", "true")
+    .withCustomHeader("gi-country-code", "CAN")
+    .execute().then(response => {
+        console.log(JSON.stringify(response.images[0], null, 1));
+    }, err => {
+        throw err;
+    });
+```
