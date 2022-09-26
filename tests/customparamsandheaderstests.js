@@ -11,12 +11,12 @@ test.beforeEach(() => {
             expires_in: "1800"
         })
         .get("/v3/search/images/creative")
-        .query({ "phrase": "cat", "safe_search": "true"})
+        .query({ "phrase": "cat", "safe_search": "true" })
         .reply(200, { response: "custom_parameter_response" })
         .get("/v3/search/images/creative")
         .query({ "phrase": "cat" })
         .matchHeader("gi-country-code", "CAN")
-        .reply(200, {response : "custom_header_response"})
+        .reply(200, { response: "custom_header_response" });
 });
 
 test("CustomParameter: The custom parameter will be added to the request", async t => {  
