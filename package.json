@@ -19,7 +19,7 @@
     "name": "Getty Images API Team"
   },
   "engines": {
-    "node": ">=10.19.0"
+    "node": ">=12.22.12"
   },
   "main": "gettyimages-api.js",
   "devDependencies": {
