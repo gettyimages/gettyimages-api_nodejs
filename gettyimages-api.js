@@ -47,10 +47,6 @@ class GettyImagesApi {
             throw new SdkException("must specify an apiKey");
         }
 
-        if (!credentials.apiSecret) {
-            throw new SdkException("must specify an apiSecret");
-        }
-
         if (!hostName) {
             hostName = "api.gettyimages.com";
         }

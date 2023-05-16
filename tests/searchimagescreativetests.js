@@ -242,3 +242,9 @@ test ("SearchImagesCreative: withAcceptLanguage will include the Accept-Language
     t.is(body.headers["accept-language"], "en-us");
     t.is(body.response, "accept-language");
 });
+
+test("SearchImagesCreative: succeeds with only API Key and withPhrase will include phrase in query", async t => {  
+    var client = new api({ apiKey: "apikey" }, null);
+    const res = await client.searchimagescreative().withPhrase("cat").execute();
+    t.is(res.response, "phrase");
+});
