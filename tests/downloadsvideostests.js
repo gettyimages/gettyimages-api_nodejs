@@ -3,13 +3,14 @@ const nock = require("nock");
 const test = require("ava");
 
 test.beforeEach(() => {
-    nock("https://api.gettyimages.com")
+    nock("https://authentication.gettyimages.com")
         .post("/oauth2/token", "client_id=apikey&client_secret=apisecret&grant_type=client_credentials")
         .reply(200, {
             access_token: "client_credentials_access_token",
             token_type: "Bearer",
             expires_in: "1800"
-        })
+        });
+    nock("https://api.gettyimages.com")
         .post("/v3/downloads/videos/123")
         .query({ "auto_download": "false" })
         .reply(200, {response : "response"})
