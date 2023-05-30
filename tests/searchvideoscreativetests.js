@@ -63,7 +63,10 @@ test.beforeEach(() => {
         .query({"phrase":"monkey"})
         .reply(200,function(path, reqBody, cb) {
             cb(null,[200, {response: "accept-language", headers: this.req.headers}]);
-        });
+        })
+        .get("/v3/search/videos/creative")
+        .query({ "min_clip_length": "15", "phrase": "cat" })
+        .reply(200, {response : "min_clip_length"});
 });
 
 test("SearchVideosCreative: withPhrase will include phrase in query", async t => {  
@@ -171,4 +174,10 @@ test ("SearchVideosCreative: withAcceptLanguage will include the Accept-Language
     t.is(code, 200);
     t.is(body.headers["accept-language"], "en-us");
     t.is(body.response, "accept-language");
+});
+
+test("SearchVideosCreative: withMinClipLength will include min_clip_length in query", async t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    const res = await client.searchvideoscreative().withMinClipLength(15).withPhrase("cat").execute();
+    t.is(res.response, "min_clip_length");
 });
