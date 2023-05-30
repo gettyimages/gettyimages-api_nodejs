@@ -20,3 +20,4 @@ Makefile
 tests
 .travis*
 *.tgz
+*.md

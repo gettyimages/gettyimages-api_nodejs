@@ -42,22 +42,22 @@ class GettyImagesApi {
     set hostName(value) {
         _hostName.set(this,value);
     }
-    constructor(credentials, hostName) {
+    constructor(credentials, hostName, authHostName) {
         if (!credentials.apiKey) {
             throw new SdkException("must specify an apiKey");
-        }
-
-        if (!credentials.apiSecret) {
-            throw new SdkException("must specify an apiSecret");
         }
 
         if (!hostName) {
             hostName = "api.gettyimages.com";
         }
 
+        if (!authHostName) {
+            authHostName = "authentication.gettyimages.com";
+        }
+
         this.hostName = hostName;
         this.credentials = credentials;
-        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refresh_token, hostName);
+        this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refresh_token, authHostName);
     }
 
     getAccessToken() {

@@ -21,10 +21,13 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 * [Getty Images API](http://developers.gettyimages.com/)
 * [Issue Tracker](https://github.com/gettyimages/gettyimages-api_nodejs/issues)
 
-## Prerequesites
+## Prerequisites
 
-* [Node.js (>= 10.19.0)](http://nodejs.org)
-* [NPM (>= 6.13.4)](http://npmjs.org)
+We will attempt to support all versions of NodeJS that are still supported.
+See the [NodeJS Release Page](https://github.com/nodejs/release) for info on this.
+
+* [Node.js (>= 14.20.1)](http://nodejs.org)
+* [NPM (>= 8.15.0)](http://npmjs.org)
 
 ## Getting Started
 
@@ -47,7 +50,7 @@ npm install --save gettyimages-api
 var api = require("gettyimages-api");
 var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
 var client = new api (creds);
-client.searchimages().withPage(1).withPageSize(1).withPhrase('beach')
+client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
     .execute().then(response => {
         console.log(JSON.stringify(response.images[0]));
     }, err => {
@@ -161,4 +164,18 @@ client.customrequest().withRoute("search/images").withMethod("get").withQueryPar
         throw err;
     });
 ```
+### Add custom parameter and header to a search request
 
+```javascript
+var api = require("gettyimages-api");
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var client = new api (creds);
+client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
+    .withCustomParameter("safe_search", "true")
+    .withCustomHeader("gi-country-code", "CAN")
+    .execute().then(response => {
+        console.log(JSON.stringify(response.images[0], null, 1));
+    }, err => {
+        throw err;
+    });
+```
