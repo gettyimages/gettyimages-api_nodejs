@@ -48,7 +48,7 @@ npm install --save gettyimages-api
 
 ```javascript
 var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
 var client = new api (creds);
 client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
     .execute().then(response => {
@@ -63,7 +63,7 @@ client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
 
 ```javascript
 var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
 var client = new api (creds);
 client.images().withId('200261415-001')
     .execute().then(response => {
@@ -78,7 +78,7 @@ client.images().withId('200261415-001')
 
 ```javascript
 var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
 var client = new api (creds);
 client.downloadsimages().withId('503928206')
     .execute().then(response => {
@@ -101,9 +101,7 @@ var fs = require("fs");
 var creds =
     {
         apiKey: "your api key",
-        apiSecret: "your api secret",
-        username: "username",
-        password: "password"
+        apiSecret: "your api secret"
     };
 var client = new api(creds);
 var videoId = "459425248";
@@ -155,7 +153,7 @@ client.getAccessToken().then(response => {
 
 ```javascript
 var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
 var client = new api (creds);
 client.customrequest().withRoute("search/images").withMethod("get").withQueryParameters({"phrase": "cat", "file_types": "eps"})
     .execute().then(response => {
@@ -168,7 +166,7 @@ client.customrequest().withRoute("search/images").withMethod("get").withQueryPar
 
 ```javascript
 var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
+var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
 var client = new api (creds);
 client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
     .withCustomParameter("safe_search", "true")
