@@ -13,7 +13,7 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 
 * Search for images and videos from our extensive creative and editorial catalogs.
 * Get image, video, and event metadata.
-* Download files using your Getty Images products (e.g., Editorial subscriptions, Easy Access, Thinkstock Subscriptions, and Image Packs).
+* Download files using your Getty Images products (e.g., Editorial subscriptions, Easy Access, and Image Packs).
 * Custom Request functionality that allows user to call any endpoint.
 
 ## Help & Support
@@ -42,138 +42,196 @@ The SDK is available as an [npm package](https://www.npmjs.com/package/gettyimag
 npm install --save gettyimages-api
 ```
 
+## Usage Notes
+
+In order to manage the lifetime of your access token and minimize the number of calls to auth (which eats into your throttle quota), only create an API client once and then reuse it for all calls.
+
+As calls are asynchronous, use `await` when executing API calls, otherwise the calls will not use the cached token.
+
 ## Examples
+
+Ensure that `"type": "module"` is set in your `package.json` to enable ES Modules and async/await support.
 
 ### Search for one or more images
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
-var client = new api (creds);
-client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
-    .execute().then(response => {
-        console.log(JSON.stringify(response.images[0]));
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
 
+try {
+    const response = await client.searchimagescreative()
+        .withPage(1)
+        .withPageSize(1)
+        .withPhrase('beach')
+        .execute();
+    console.log(JSON.stringify(response.images[0]));
+} catch (err) {
+    console.error("An error occurred while searching for images:", err);
+}
 ```
 
 ### Get detailed information for one or more images
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
-var client = new api (creds);
-client.images().withId('200261415-001')
-    .execute().then(response => {
-        console.log(JSON.stringify(response.images[0]));
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
 
+try {
+    const response = await client.images().withId('200261415-001').execute();
+    console.log(JSON.stringify(response.images[0]));
+} catch (err) {
+    console.error("An error occurred while retrieving image details:", err);
+}
 ```
 
-### Download an image
+### Get download URL for an image
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
-var client = new api (creds);
-client.downloadsimages().withId('503928206')
-    .execute().then(response => {
-        console.log(response.uri);
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
 
+try {
+    const response = await client.downloadsimages().withId('503928206').execute();
+    console.log(response.uri);
+} catch (err) {
+    console.error(err);
+}
 ```
 
 ### Get details and download a video
 
 ```javascript
-// Gets some info about a video and then downloads the NTSC SD version
+// Gets some info about a video and then downloads the Web version
 
-var api = require("gettyimages-api");
-var https = require("https");
-var fs = require("fs");
+import api from "gettyimages-api";
+import https from "https";
+import fs from "fs";
 
-var creds =
-    {
-        apiKey: "your api key",
-        apiSecret: "your api secret"
-    };
-var client = new api(creds);
-var videoId = "459425248";
-client.videos().withResponseField(["summary_set", "downloads"]).withId(videoId).execute().then(response => {
-        console.log("Title: " + response.title);
-        console.log("Sizes: ");
-        response.download_sizes.forEach((current, index, arr) => {
-            console.log(current.name + " - " + current.description);
-        })
-        client.downloadsvideos().withId(videoId).withSize("ntsccm").execute().then(response => {
-            var downloadUri = response.uri;
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
+const videoId = "459425248";
 
-            https.get(downloadUri, (res) => {
-                if (res.statusCode === 200) {
-                    var header = res.headers["content-disposition"];
-                    var filename = header.split("filename=")[1];
-                    console.log(filename);
-                    var file = fs.createWriteStream("./" + filename);
-                    res.on("data", (chunk) => {
-                        file.write(chunk);
-                    }).on("end", () => {
-                        file.end();
-                    });
-                }
-            });
-        }, err => {
-            throw err;
-        });
-    }, err => {
-        throw err;
+try {
+    const response = await client.videos().withResponseField(["summary_set", "downloads"]).withId(videoId).execute();
+    console.log("Title: " + response.title);
+    console.log("Sizes: ");
+    response.download_sizes.forEach((current) => {
+        console.log(current.name + " - " + current.description);
     });
+
+    const downloadResponse = await client.downloadsvideos().withId(videoId).withSize("lwf").execute();
+    const downloadUri = downloadResponse.uri;
+    await downloadFile(downloadUri);
+    process.exit(0);
+
+} catch (err) {
+    console.error(err);
+    process.exit(1);
+}
+
+async function downloadFile(url) {
+    return new Promise((resolve, reject) => {
+        const handleRequest = (currentUrl, redirectCount = 0) => {
+            const maxRedirects = 5;
+
+            if (redirectCount > maxRedirects) {
+                return reject(new Error("Too many redirects"));
+            }
+
+            https.get(currentUrl, (response) => {
+                // Handle redirects
+                if ([301, 302, 307, 308].includes(response.statusCode)) {
+                    const redirectUrl = response.headers.location;
+                    if (!redirectUrl) {
+                        return reject(new Error("Redirect location not provided"));
+                    }
+                    return handleRequest(redirectUrl, redirectCount + 1);
+                }
+
+                if (response.statusCode !== 200) {
+                    return reject(new Error(`Failed to download file: HTTP ${response.statusCode}`));
+                }
+
+                const header = response.headers["content-disposition"];
+                const outputPath = header.split("filename=")[1];
+                const fileStream = fs.createWriteStream(outputPath);
+                response.pipe(fileStream);
+
+                fileStream.on("finish", () => {
+                    fileStream.close(() => resolve());
+                });
+
+                fileStream.on("error", (err) => {
+                    fs.unlink(outputPath, () => reject(err));
+                });
+
+                response.on("error", (err) => {
+                    fs.unlink(outputPath, () => reject(err));
+                });
+            }).on("error", (err) => {
+                reject(err);
+            });
+        };
+
+        handleRequest(url);
+    });
+}
 
 ```
 
-### Get an access token for use with the Getty Images Connect API
+### Get an access token for use with the Getty Images API
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret", username: "your_username", password: "your_password" };
-var client = new api (creds);
-client.getAccessToken().then(response => {
-        console.log(response.access_token);
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
+
+try {
+    const response = await client.getAccessToken();
+    console.log(response.access_token);
+} catch (err) {
+    console.error("An error occurred while retrieving the access token:", err);
+}
 ```
 
 ### Use the custom request functionality
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
-var client = new api (creds);
-client.customrequest().withRoute("search/images").withMethod("get").withQueryParameters({"phrase": "cat", "file_types": "eps"})
-    .execute().then(response => {
-        console.log(JSON.stringify(response.images[0]));
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
+
+try {
+    const response = await client.customrequest()
+        .withRoute("search/images")
+        .withMethod("get")
+        .withQueryParameters({ "phrase": "cat", "file_types": "eps" })
+        .execute();
+    console.log(JSON.stringify(response.images[0]));
+} catch (err) {
+    console.error("An error occurred while making the custom request:", err);
+}
 ```
 ### Add custom parameter and header to a search request
 
 ```javascript
-var api = require("gettyimages-api");
-var creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
-var client = new api (creds);
-client.searchimagescreative().withPage(1).withPageSize(1).withPhrase('beach')
-    .withCustomParameter("safe_search", "true")
-    .withCustomHeader("gi-country-code", "CAN")
-    .execute().then(response => {
-        console.log(JSON.stringify(response.images[0], null, 1));
-    }, err => {
-        throw err;
-    });
+import api from "gettyimages-api";
+const creds = { apiKey: "your_api_key", apiSecret: "your_api_secret" };
+const client = new api(creds);
+
+try {
+    const response = await client.searchimagescreative()
+        .withPage(1)
+        .withPageSize(1)
+        .withPhrase('beach')
+        .withCustomParameter("safe_search", "true")
+        .withCustomHeader("gi-country-code", "CAN")
+        .execute();
+    console.log(JSON.stringify(response.images[0], null, 1));
+} catch (err) {
+    console.error("An error occurred while searching for images:", err);
+}
 ```
