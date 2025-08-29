@@ -60,6 +60,15 @@ test.beforeEach(() => {
         .query({ "specific_people": "reggie jackson", "phrase": "cat" })
         .reply(200, {response : "specific_people"})
         .get("/v3/search/videos/editorial")
+        .query({ "start_date": "2023-01-01", "phrase": "cat" })
+        .reply(200, {response : "start_date"})
+        .get("/v3/search/videos/editorial")
+        .query({ "end_date": "2023-12-31", "phrase": "cat" })
+        .reply(200, {response : "end_date"})
+        .get("/v3/search/videos/editorial")
+        .query({ "orientations": ["horizontal", "vertical"].join(","), "phrase": "cat" })
+        .reply(200, {response : "orientations"})
+        .get("/v3/search/videos/editorial")
         .query({"phrase":"monkey"})
         .reply(200,function(path, reqBody, cb) {
             cb(null,[200, {response: "accept-language", headers: this.req.headers}]);
@@ -160,6 +169,24 @@ test("SearchVideosEditorial: withSpecificPeople will include specific_people in 
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchvideoseditorial().withPhrase("cat").withSpecificPeople("reggie jackson").execute();
     t.is(res.response, "specific_people");
+});
+
+test("SearchVideosEditorial: withStartDate will include start_date in query", async t => {  
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    const res = await client.searchvideoseditorial().withPhrase("cat").withStartDate("2023-01-01").execute();
+    t.is(res.response, "start_date");
+});
+
+test("SearchVideosEditorial: withEndDate will include end_date in query", async t => {  
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    const res = await client.searchvideoseditorial().withPhrase("cat").withEndDate("2023-12-31").execute();
+    t.is(res.response, "end_date");
+});
+
+test("SearchVideosEditorial: withOrientation will include orientations in query", async t => {  
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    const res = await client.searchvideoseditorial().withPhrase("cat").withOrientation(["horizontal", "vertical"]).execute();
+    t.is(res.response, "orientations");
 });
 
 test ("SearchVideosEditorial: withAcceptLanguage will include the Accept-Language header in request", async t => {
