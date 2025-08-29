@@ -32,7 +32,7 @@ jobs:
     - run: npm ci
     - run: npm test
     - run: npm pack
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         name: package
         path: ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
