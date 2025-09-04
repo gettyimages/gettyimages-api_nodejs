@@ -60,8 +60,8 @@ test.beforeEach(() => {
         .query({ "specific_people": "reggie jackson", "phrase": "cat" })
         .reply(200, {response : "specific_people"})
         .get("/v3/search/videos/editorial")
-        .query({ "start_date": "2023-01-01", "phrase": "cat" })
-        .reply(200, {response : "start_date"})
+        .query({ "date_from": "2023-01-01", "phrase": "cat" })
+        .reply(200, {response : "date_from"})
         .get("/v3/search/videos/editorial")
         .query({ "end_date": "2023-12-31", "phrase": "cat" })
         .reply(200, {response : "end_date"})
@@ -171,10 +171,10 @@ test("SearchVideosEditorial: withSpecificPeople will include specific_people in 
     t.is(res.response, "specific_people");
 });
 
-test("SearchVideosEditorial: withStartDate will include start_date in query", async t => {  
+test("SearchVideosEditorial: withStartDate will include date_from in query", async t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchvideoseditorial().withPhrase("cat").withStartDate("2023-01-01").execute();
-    t.is(res.response, "start_date");
+    t.is(res.response, "date_from");
 });
 
 test("SearchVideosEditorial: withEndDate will include end_date in query", async t => {  

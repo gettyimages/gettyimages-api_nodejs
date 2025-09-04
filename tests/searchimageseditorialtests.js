@@ -93,8 +93,8 @@ test.beforeEach(() => {
         .query({ "specific_people": "reggie jackson", "phrase": "cat" })
         .reply(200, {response : "specific_people"})
         .get("/v3/search/images/editorial")
-        .query({ "start_date": "2015-04-01", "phrase": "cat" })
-        .reply(200, {response : "start_date"})
+        .query({ "date_from": "2015-04-01", "phrase": "cat" })
+        .reply(200, {response : "date_from"})
         .get("/v3/search/images/editorial")
         .query({"phrase":"monkey"})
         .reply(200,function(path, reqBody, cb) {
@@ -264,10 +264,10 @@ test("SearchImagesEditorial: withSpecificPeople will include specific_people in 
     t.is(res.response, "specific_people");
 });
 
-test("SearchImagesEditorial: withStartDate will include start_date in query", async t => {  
+test("SearchImagesEditorial: withStartDate will include date_from in query", async t => {  
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchimageseditorial().withPhrase("cat").withStartDate("2015-04-01").execute();
-    t.is(res.response, "start_date");
+    t.is(res.response, "date_from");
 });
 
 test ("SearchImagesEditorial: withAcceptLanguage will include the Accept-Languaged header in request", async t => {
