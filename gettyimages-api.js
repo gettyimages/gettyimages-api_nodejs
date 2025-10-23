@@ -42,6 +42,15 @@ class GettyImagesApi {
     set hostName(value) {
         _hostName.set(this,value);
     }
+
+    get token() {
+        return {
+            access_token: this.creds.token.access_token,
+            token_type: "Bearer",
+            expiration: this.creds.token.expiration
+        };
+    }
+
     constructor(credentials, hostName, authHostName) {
         if (!credentials.apiKey) {
             throw new SdkException("must specify an apiKey");
@@ -58,6 +67,9 @@ class GettyImagesApi {
         this.hostName = hostName;
         this.credentials = credentials;
         this.creds = new Credentials(credentials.apiKey, credentials.apiSecret, credentials.username, credentials.password, credentials.refresh_token, authHostName);
+        if (credentials.token) {
+            this.creds.token = credentials.token;
+        }
     }
 
     getAccessToken() {
