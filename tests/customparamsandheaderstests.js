@@ -8,7 +8,7 @@ test.beforeEach(() => {
         .reply(200, {
             access_token: "client_credentials_access_token",
             token_type: "Bearer",
-            expires_in: "1800"
+            expires_in: 1800
         });
     nock("https://api.gettyimages.com")
         .get("/v3/search/images/creative")
