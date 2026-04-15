@@ -5,6 +5,9 @@ on:
   release:
     types: [released]
 
+permissions:
+  id-token: write
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,10 +47,8 @@ jobs:
       with:
         name: package
         path: .
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v6
       with:
-        node-version: 18.x
+        node-version: 24
         registry-url: 'https://registry.npmjs.org'
     - run: npm publish ./gettyimages-api-${{ steps.previoustag.outputs.tag }}.tgz
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION_KEY}}
