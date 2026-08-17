@@ -63,8 +63,8 @@ test.beforeEach(() => {
         .query({ "date_from": "2023-01-01", "phrase": "cat" })
         .reply(200, {response : "date_from"})
         .get("/v3/search/videos/editorial")
-        .query({ "end_date": "2023-12-31", "phrase": "cat" })
-        .reply(200, {response : "end_date"})
+        .query({ "date_to": "2023-12-31", "phrase": "cat" })
+        .reply(200, {response : "date_to"})
         .get("/v3/search/videos/editorial")
         .query({ "orientations": ["horizontal", "vertical"].join(","), "phrase": "cat" })
         .reply(200, {response : "orientations"})
@@ -177,10 +177,10 @@ test("SearchVideosEditorial: withStartDate will include date_from in query", asy
     t.is(res.response, "date_from");
 });
 
-test("SearchVideosEditorial: withEndDate will include end_date in query", async t => {  
+test("SearchVideosEditorial: withEndDate will include date_to in query", async t => {
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchvideoseditorial().withPhrase("cat").withEndDate("2023-12-31").execute();
-    t.is(res.response, "end_date");
+    t.is(res.response, "date_to");
 });
 
 test("SearchVideosEditorial: withOrientation will include orientations in query", async t => {  

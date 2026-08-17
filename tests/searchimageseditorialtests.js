@@ -39,8 +39,8 @@ test.beforeEach(() => {
         .query({ "embed_content_only": "true", "phrase": "cat" })
         .reply(200, {response : "embed_content_only"})
         .get("/v3/search/images/editorial")
-        .query({ "end_date": "2015-04-01", "phrase": "cat" })
-        .reply(200, {response : "end_date"})
+        .query({ "date_to": "2015-04-01", "phrase": "cat" })
+        .reply(200, {response : "date_to"})
         .get("/v3/search/images/editorial")
         .query({ "entity_uris": [123, 456].join(","), "phrase": "cat" })
         .reply(200, {response : "entity_uris"})
@@ -156,10 +156,10 @@ test("SearchImagesEditorial: withEmbedContentOnly will include embed_content_onl
     t.is(res.response, "embed_content_only");
 });
 
-test("SearchImagesEditorial: withEndDate will include end_date in query", async t => {  
+test("SearchImagesEditorial: withEndDate will include date_to in query", async t => {
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchimageseditorial().withPhrase("cat").withEndDate("2015-04-01").execute();
-    t.is(res.response, "end_date");
+    t.is(res.response, "date_to");
 });
 
 test("SearchImagesEditorial: withEntityUris will include entity_uris in query", async t => {  
