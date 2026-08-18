@@ -47,6 +47,21 @@ In order to manage the lifetime of your access token and minimize the number of 
 
 As calls are asynchronous, use `await` when executing API calls, otherwise the calls will not use the cached token.
 
+### TypeScript
+
+Type declarations ship with the package. There is no separate `@types` package to install.
+
+```typescript
+import api from "gettyimages-api";
+
+const client = new api({ apiKey: "your_api_key", apiSecret: "your_api_secret" });
+const response = await client.searchimages().withPhrase("beach").withPageSize(1).execute();
+```
+
+Builders named in the singular, such as `withCollectionCode`, accept either a single value or
+an array of values. Responses are typed as `any`, because the API returns different fields
+depending on the endpoint, the requested response fields, and your products.
+
 ## Examples
 
 Ensure that `"type": "module"` is set in your `package.json` to enable ES Modules and async/await support.

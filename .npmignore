@@ -21,3 +21,5 @@ tests
 .travis*
 *.tgz
 *.md
+types-test.ts
+tsconfig.types.json

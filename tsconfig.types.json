@@ -1,0 +1,18 @@
+{
+    "//": "Type-checks the published declarations against types-test.ts. Not shipped.",
+    "compilerOptions": {
+        "strict": true,
+        "noEmit": true,
+        "target": "ES2017",
+        "module": "node16",
+        "moduleResolution": "node16",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": false,
+        "types": ["node"]
+    },
+    "files": [
+        "gettyimages-api.d.ts",
+        "types-test.ts"
+    ]
+}
