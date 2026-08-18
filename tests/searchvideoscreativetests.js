@@ -66,7 +66,10 @@ test.beforeEach(() => {
         })
         .get("/v3/search/videos/creative")
         .query({ "min_clip_length": "15", "phrase": "cat" })
-        .reply(200, {response : "min_clip_length"});
+        .reply(200, {response : "min_clip_length"})
+        .get("/v3/search/videos/creative")
+        .query({ "orientations": ["horizontal", "vertical"].join(","), "phrase": "cat" })
+        .reply(200, {response : "orientations"});
 });
 
 test("SearchVideosCreative: withPhrase will include phrase in query", async t => {  
@@ -180,4 +183,10 @@ test("SearchVideosCreative: withMinClipLength will include min_clip_length in qu
     var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
     const res = await client.searchvideoscreative().withMinClipLength(15).withPhrase("cat").execute();
     t.is(res.response, "min_clip_length");
+});
+
+test("SearchVideosCreative: withOrientation will include orientations in query", async t => {
+    var client = new api({ apiKey: "apikey", apiSecret: "apisecret" }, null);
+    const res = await client.searchvideoscreative().withPhrase("cat").withOrientation(["horizontal", "vertical"]).execute();
+    t.is(res.response, "orientations");
 });
