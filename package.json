@@ -22,14 +22,17 @@
     "node": ">=14.20.1"
   },
   "main": "gettyimages-api.js",
+  "types": "gettyimages-api.d.ts",
   "devDependencies": {
+    "@types/node": "^26.2.0",
     "ava": "^4.3.3",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "nock": "^12.0.1",
-    "nyc": "^15.0.0"
+    "nyc": "^15.0.0",
+    "typescript": "^7.0.2"
   },
   "overrides": {
     "js-yaml": "^3.15.0"
@@ -40,6 +43,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/ava --verbose ./tests/*.js",
+    "test:types": "./node_modules/.bin/tsc --noEmit -p tsconfig.types.json",
     "coverage": "./node_modules/.bin/nyc report --reporter=text-lcov > lcov.info",
     "lint": "./node_modules/.bin/eslint ."
   }

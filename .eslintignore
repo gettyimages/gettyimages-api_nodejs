@@ -1,1 +1,4 @@
 **/*{.,-}min.js
+types-test.ts
+tsconfig.types.json
+*.d.ts
