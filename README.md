@@ -24,7 +24,7 @@ This SDK makes using the Getty Images [API](http://developers.gettyimages.com) e
 We will attempt to support all versions of NodeJS that are still supported.
 See the [NodeJS Release Page](https://github.com/nodejs/release) for info on this.
 
-* [Node.js (>= 14.20.1)](http://nodejs.org)
+* [Node.js (^22.23.4 || ^24.22.1 || >=26.12.1)](http://nodejs.org)
 * [NPM (>= 8.15.0)](http://npmjs.org)
 
 ## Getting Started
